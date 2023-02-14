@@ -4,9 +4,17 @@ import { useAuthContext } from "..//../Context/AuthContext";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginSchema } from "./LoginSchema";
+
 export default function Login() {
   const { authorization, login } = useAuthContext();
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (authorization) {
+  //     navigate(`/perfilUsuario/${authorization.id}`);
+  //   }
+  // }, [authorization]);
+
   async function onSubmit(values, actions) {
     login(values);
     await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -25,11 +33,6 @@ export default function Login() {
     validationSchema: LoginSchema,
     onSubmit,
   });
-  //   useEffect(() => {
-  //     if (authorization) {
-  //       navigate("/perfilUsuario");
-  //     }
-  //   }, [authorization]);
   return (
     <div>
       <form onSubmit={handleSubmit}>

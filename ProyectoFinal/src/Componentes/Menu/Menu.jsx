@@ -55,13 +55,13 @@ export default function Menu() {
             </button>
             <ul className="dropdown-menu bg-dark py-2">
               <li>
-                <button
+                <Link
+                  to="/"
                   className="dropdown-item text-white bg-dark"
-                  href="#"
                   onClick={logout}
                 >
                   Logout
-                </button>
+                </Link>
               </li>
               <hr className="dropdown-divider bg-secondary" />
 

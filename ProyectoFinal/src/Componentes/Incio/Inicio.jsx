@@ -14,15 +14,15 @@ export default function Inicio() {
         </div>
       </section>
       <section className="imagenseccion2">
-        <div class="d-flex align-items-center">
-          <div class="flex-shrink-0">
+        <div className="d-flex align-items-center">
+          <div className="flex-shrink-0">
             <img
               src="../src/assets/Imagenes/eldenring.jpg"
               alt="..."
               className="imagenseccion"
             />
           </div>
-          <div class="flex-grow-1 ms-3">
+          <div className="flex-grow-1 ms-3">
             <h2 className="tituloseccion1 text-white">
               Descubre nuevos juegos y nuevas comunidades.
             </h2>
@@ -41,19 +41,19 @@ export default function Inicio() {
         </div>
       </section>
       <section className="imagenseccion3">
-        <div class="container">
-          <div class="row">
-            <div class="col-9">
+        <div className="container">
+          <div className="row">
+            <div className="col-9">
               <h1 className="mt-5 text-white">
                 Comparte tus aventuras a tus amigos
               </h1>
             </div>
-            <div class="col-4">
+            <div className="col-4">
               <h2 className="text-secondary">
                 Sube las fotos de tus aventuras
               </h2>
             </div>
-            <div class="col-6">
+            <div className="col-6">
               <h2 className="text-secondary">
                 Unete a chats de tus juegos favoritos
               </h2>

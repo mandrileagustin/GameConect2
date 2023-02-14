@@ -33,9 +33,11 @@ controller.addUser = async (req, res) => {
 };
 
 controller.getUserById = async (req, res) => {
+  const id = req.params.id;
+  if (!id) return res.status(404).send("Error al recibir al body");
   try {
     // Buscamos si el id de la imagen existe en la base de datos
-    const usuario = await dao.getUserById(req.params.id);
+    const usuario = await dao.getUserById(id);
     // Si no existe devolvemos un 404 (not found)
     if (usuario.length <= 0)
       return res.status(404).send("el usuario no existe");

@@ -75,7 +75,7 @@ userQueris.getUserById = async (id) => {
   } catch (e) {
     throw new Error(e);
   } finally {
-    conn && (await conn.end);
+    conn && (await conn.end());
   }
 };
 

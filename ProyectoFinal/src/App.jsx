@@ -17,7 +17,7 @@ function App() {
               <Route index element={<HomePage />} />
               <Route path="/login" element={<InicioSecion />} />
               <Route path="/registro" element={<VistaRegistro />} />
-              <Route path="/perfilUsuario" element={<PerfilUsuario />} />
+              <Route path="/perfilUsuario/:id" element={<PerfilUsuario />} />
             </Route>
           </Routes>
         </BrowserRouter>

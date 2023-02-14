@@ -1,10 +1,8 @@
 import Usuario from "../../Componentes/Usuario/Usuario";
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 export default function PerfilUsuario() {
   const { id } = useParams();
-
   const [usuario, setUsuario] = useState([]);
 
   useEffect(() => {

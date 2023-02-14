@@ -11,7 +11,6 @@ export default function Perfil({ usuario }) {
             <div className="card-body">
               <h4 className="card-title">{usuario.nickname}</h4>
               <h5 className="text-card">{usuario.plataforma}</h5>
-              <h5 className="text-card">{usuario.generoJuego}</h5>
 
               <button className="btn btn-outline-primary">
                 Editar usuario
