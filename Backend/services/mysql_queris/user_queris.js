@@ -32,7 +32,7 @@ userQueris.addUser = async (userData) => {
       email: userData.email,
       password: md5(userData.password),
       plataforma: userData.plataforma,
-      role: userData.role,
+      nickname: userData.nickname,
       genero: userData.genero,
       edad: userData.edad,
     };
