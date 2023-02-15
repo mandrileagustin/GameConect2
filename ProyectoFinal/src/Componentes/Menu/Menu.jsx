@@ -2,6 +2,7 @@ import { useAuthContext } from "../../Context/AuthContext";
 import { Link } from "react-router-dom";
 
 export default function Menu() {
+  const { authorization } = useAuthContext();
   const { logout } = useAuthContext();
 
   return (
@@ -35,10 +36,13 @@ export default function Menu() {
         </div>
         <div className="offcanvas-body">
           <div className="text-white d-grid gap-4">
-            <Link className="text-decoration-none text-white">
+            <Link className="text-decoration-none text-white" to="/Home">
               <h3 id="titulo3">Feed</h3>
             </Link>
-            <Link className="text-decoration-none text-white">
+            <Link
+              className="text-decoration-none text-white"
+              to={`/perfilUsuario/${authorization.id}`}
+            >
               <h3 id="titulo3">Mis Juegos</h3>
             </Link>
             <Link className="text-decoration-none text-white">
@@ -54,6 +58,14 @@ export default function Menu() {
               <i className="bi bi-person-circle"></i>
             </button>
             <ul className="dropdown-menu bg-dark py-2">
+              <li>
+                <Link
+                  to={`/perfilUsuario/${authorization.id}`}
+                  className="dropdown-item text-white bg-dark"
+                >
+                  Mi perfil
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/"

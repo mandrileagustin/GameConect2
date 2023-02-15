@@ -35,7 +35,6 @@ dao.getJuegoByName = async (name) => await juegosQueris.getJuegoByName(name);
 dao.deleteJuego = async (id) => await juegosQueris.deleteJuego(id);
 
 ///Posts
-
 dao.addPost = async (postData) => await postQueris.addPost(postData);
 
 dao.getPostById = async (id) => await postQueris.getPostById(id);

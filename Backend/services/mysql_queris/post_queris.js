@@ -8,7 +8,12 @@ PostQueris.getPost = async () => {
   let conn = null;
   try {
     conn = await db.createConnection();
-    return await db.query("SELECT * FROM post", [], "select", conn);
+    return await db.query(
+      "SELECT * FROM post WHERE id  ORDER BY id DESC",
+      [],
+      "select",
+      conn
+    );
   } catch (e) {
     throw new Error(e);
   } finally {

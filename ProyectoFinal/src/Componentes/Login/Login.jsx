@@ -1,19 +1,12 @@
 import "./Login.css";
 import { useFormik } from "formik";
 import { useAuthContext } from "..//../Context/AuthContext";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 import { LoginSchema } from "./LoginSchema";
 
 export default function Login() {
-  const { authorization, login } = useAuthContext();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (authorization) {
-      navigate(`/perfilUsuario/${authorization.id}`);
-    }
-  }, [authorization]);
+  const { login } = useAuthContext();
 
   async function onSubmit(values, actions) {
     login(values);

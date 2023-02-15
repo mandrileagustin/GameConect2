@@ -98,7 +98,7 @@ userQueris.updateUser = async (id, userData) => {
     };
     console.log(userObj);
     userObj = await utils.removeUndefinedKeys(userObj);
-    console.log(userObj);
+
     return await db.query(
       "UPDATE usuario SET ? WHERE id = ?",
       [userObj, id],

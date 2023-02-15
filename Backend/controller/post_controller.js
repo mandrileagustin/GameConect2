@@ -6,39 +6,45 @@ const controller = {};
 const __dirname = currentDir().__dirname;
 
 controller.addPost = async (req, res) => {
-  const { comentario } = req.body;
   const { id } = req.params;
+  const { comentario } = req.body;
 
   try {
-    if (req.files === null) return;
+    // if () return;
 
-    if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send("No se ha cargado ningún archivo");
-    }
-    if (!req.query) {
-      return res.status(400).send("no hay id del producto");
-    }
+    if (req.files !== undefined) {
+      console.log(req.files);
+      const images = !req.files.imagen.length
+        ? [req.files.imagen]
+        : req.files.imagen;
+      console.log("hola");
+      images.forEach(async (image) => {
+        let uploadPath = "app/public/images/products/" + image.name;
 
-    const images = !req.files.imagen.length
-      ? [req.files.imagen]
-      : req.files.imagen;
-
-    images.forEach(async (image) => {
-      let uploadPath = "app/public/images/products/" + image.name;
-
-      image.mv(uploadPath, (err) => {
-        if (err) return res.status(500).send(err);
+        image.mv(uploadPath, (err) => {
+          if (err) return res.status(500).send(err);
+        });
+        const postObj = {
+          comentario: comentario,
+          path: uploadPath,
+          idUsuario: id,
+        };
+        console.log("hola2");
+        const addPost = await dao.addPost(postObj);
+        if (addPost)
+          return res.send(`post ${comentario} con id ${addPost} registrado`);
       });
+    } else {
       const postObj = {
         comentario: comentario,
-        path: uploadPath,
+
         idUsuario: id,
       };
       const addPost = await dao.addPost(postObj);
       if (addPost)
         return res.send(`post ${comentario} con id ${addPost} registrado`);
-    });
-    return res.send("Imagen subida!");
+    }
+    console.log("hola3");
   } catch (e) {
     console.log(e.message);
     return res.status(400).send(e.message);
@@ -50,7 +56,7 @@ controller.getPostById = async (req, res) => {
     // Buscamos si el id de la imagen existe en la base de datos
     const post = await dao.getPostById(req.params.id);
     // Si no existe devolvemos un 404 (not found)
-    if (post.length <= 0) return res.status(404).send("el producto no existe");
+    if (post.length <= 0) return res.status(404).send("No existe el Post");
     // Devolvemos la ruta donde se encuentra la imagen
     return res.send(post[0]);
   } catch (e) {
