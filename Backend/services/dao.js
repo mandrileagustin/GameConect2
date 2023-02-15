@@ -48,4 +48,7 @@ dao.getPostByName = async (comentario) =>
   await postQueris.getPostByName(comentario);
 
 dao.deletePost = async (id) => await postQueris.deletePost(id);
+
+dao.getPostByIdUsuario = async (idUsuario) =>
+  await postQueris.getPostByIdUsuario(idUsuario);
 export default dao;

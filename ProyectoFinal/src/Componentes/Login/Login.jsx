@@ -9,11 +9,11 @@ export default function Login() {
   const { authorization, login } = useAuthContext();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (authorization) {
-  //     navigate(`/perfilUsuario/${authorization.id}`);
-  //   }
-  // }, [authorization]);
+  useEffect(() => {
+    if (authorization) {
+      navigate(`/perfilUsuario/${authorization.id}`);
+    }
+  }, [authorization]);
 
   async function onSubmit(values, actions) {
     login(values);

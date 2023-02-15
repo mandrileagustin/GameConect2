@@ -45,6 +45,23 @@ PostQueris.getPostById = async (id) => {
     conn && (await conn.end);
   }
 };
+
+PostQueris.getPostByIdUsuario = async (idUsuario) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM post WHERE idUsuario = ?",
+      idUsuario,
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end);
+  }
+};
 PostQueris.getPostByPath = async (path) => {
   let conn = null;
   try {
