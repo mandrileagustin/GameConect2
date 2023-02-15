@@ -45,7 +45,10 @@ export default function Menu() {
             >
               <h3 id="titulo3">Mis Juegos</h3>
             </Link>
-            <Link className="text-decoration-none text-white">
+            <Link
+              className="text-decoration-none text-white"
+              to="/buscarjugador"
+            >
               <h3 id="titulo3">Buscar Jugadores</h3>
             </Link>
           </div>
@@ -68,7 +71,7 @@ export default function Menu() {
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="/login"
                   className="dropdown-item text-white bg-dark"
                   onClick={logout}
                 >

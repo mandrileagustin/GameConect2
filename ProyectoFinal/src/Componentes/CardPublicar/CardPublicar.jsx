@@ -49,7 +49,7 @@ export default function HomeUsuario() {
           <div className="card">
             <div className="card-header">Publicar</div>
             <div className="card-body">
-              <input
+              <textarea
                 type="text"
                 className={
                   errors.comentario && touched.nombre
