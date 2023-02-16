@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Registro() {
   const { authorization } = useAuthContext();
-  const navigate = useNavigate();
+
   const [juegos, setJuego] = useState([]);
   useEffect(() => {
     const fetchData = async () => {

@@ -13,13 +13,13 @@ export default function MenuChat() {
         <i className="bi bi-chat-left-fill"></i>{" "}
       </button>
       <div
-        className="offcanvas offcanvas-end"
+        className="offcanvas offcanvas-end bg-dark"
         tabIndex="-1"
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"
       >
         <div className="offcanvas-header">
-          <h3 id="titulo3">Chat</h3>
+          <h3 className="text-white">Chat</h3>
           <button
             type="button"
             className="btn-close bg-secondary"
@@ -27,7 +27,9 @@ export default function MenuChat() {
             aria-label="Close"
           ></button>
         </div>
-        <div className="offcanvas-body">Aca van los chats</div>
+        <Link to="/chat" className="btn btn-outline-success">
+          Chat
+        </Link>
       </div>
     </div>
   );

@@ -3,6 +3,22 @@ import db from "../mysql.js";
 const JuegosQueris = {};
 
 ///Juegos
+JuegosQueris.matchJuego = async (plataforma, idJuego) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM usuario join juegosusuarios on usuario.id = juegosusuarios.idUsuario where plataforma = ? and idJuego = ?",
+      [plataforma, idJuego],
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 JuegosQueris.getJuego = async () => {
   let conn = null;

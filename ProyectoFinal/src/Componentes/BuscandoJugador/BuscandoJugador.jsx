@@ -1,4 +1,4 @@
-export default function BuscandoJugador() {
+export default function BuscandoJugador({ plataforma, juego }) {
   return (
     <>
       <div className="d-flex justify-content-center mt-5 d-grid gap-4">
@@ -10,9 +10,9 @@ export default function BuscandoJugador() {
           <div className="card-body">
             <h5 className="card-title">Card title</h5>
             <p className="card-text">NickName usuario</p>
-            <p className="card-text">Edad</p>
+
             <p className="card-text">Genero</p>
-            <p className="card-text">Juegos</p>
+            <p className="card-text">Juegos por el que filtramos</p>
           </div>
         </div>
 
@@ -25,9 +25,9 @@ export default function BuscandoJugador() {
           <div className="card-body d-grid gap-3">
             <h5 className="card-title">Card title</h5>
             <p className="card-text">NickName usuario con el que conectamos</p>
-            <p className="card-text">Edad</p>
-            <p className="card-text">Genero</p>
-            <p className="card-text">Juegos</p>
+
+            <p className="card-text">{plataforma}</p>
+            <p className="card-text">{juego}</p>
             <button className="btn btn-primary">Conectar</button>
             <button className="btn btn-danger">Seguir buscando</button>
           </div>

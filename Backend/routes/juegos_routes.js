@@ -13,4 +13,6 @@ JuegosRouter.get("/juegoName/:name", JuegosController.getJuegoByName);
 
 JuegosRouter.delete("/:id", JuegosController.deleteJuego);
 
+JuegosRouter.get("/match", JuegosController.matchJuego);
+
 export default JuegosRouter;

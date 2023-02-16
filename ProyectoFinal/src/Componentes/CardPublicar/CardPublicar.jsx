@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { BasicFormSchema } from "./PublicarSchema";
 import { useAuthContext } from "../../Context/AuthContext";
 
-export default function HomeUsuario() {
+export default function Comentario() {
   const { authorization } = useAuthContext();
   async function onSubmit(values, actions) {
     fetch(`http://localhost:3000/post/addPost/${authorization.id}`, {

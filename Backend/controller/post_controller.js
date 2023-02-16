@@ -37,7 +37,6 @@ controller.addPost = async (req, res) => {
     } else {
       const postObj = {
         comentario: comentario,
-
         idUsuario: id,
       };
       const addPost = await dao.addPost(postObj);
