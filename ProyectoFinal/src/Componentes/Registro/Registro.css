@@ -1,0 +1,32 @@
+.card-registro{
+    background: linear-gradient(200deg, transparent, #15107c);
+    padding-top: 24px;
+    padding-bottom: 24px;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-block-start-color: #76197e;
+    border-right-color: #76197e;
+    border-bottom-color: #3d3e99;
+    border-left-color: #3d3e99;
+    border-radius: 16px;
+    width: 20%;
+    
+  }
+
+  #input-error{
+    color: rgb(184, 0, 0);
+  }
+
+  .card-juegos{
+    background: linear-gradient(200deg, black, #15107c);
+    text-align: start;
+    border-width: 1px;
+    border-style: solid;
+    border-block-start-color: #76197e;
+    border-right-color: #76197e;
+    border-bottom-color: #3d3e99;
+    border-left-color: #3d3e99;
+    border-radius: 16px;
+    width: 20%;
+  }

@@ -9,7 +9,6 @@ import PerfilUsuario from "./Views/PerfilUsuario/PerfilUsuario";
 import Home from "./Views/Home/Home";
 import SearchPlayersVista from "./Views/SearchPlayersVista/SearchPlayersVista";
 // import io from "socket.io-client";
-import BuscandoJugadorVista from "./Views/BuscandoJugadorVista/BuscandoJugadorVista";
 
 import ChatVista from "./Views/ChatVista/ChatVista";
 // const socket = io.connect("http://localhost:3001");
@@ -23,10 +22,7 @@ function App() {
               <Route path="home" element={<Home />} />
               <Route path="perfilUsuario/:id" element={<PerfilUsuario />} />
               <Route path="/buscarjugador" element={<SearchPlayersVista />} />
-              <Route
-                path="/buscandojugador"
-                element={<BuscandoJugadorVista />}
-              />
+
               <Route path="chat" element={<ChatVista />} />
             </Route>
 

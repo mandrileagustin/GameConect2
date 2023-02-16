@@ -73,7 +73,7 @@ export default function Registro() {
     <>
       <form onSubmit={handleSubmit}>
         <div>
-          <div className="card-body mb-3 w-75">
+          <div className="card-body mb-3 card-registro px-2 py-2 mt-3 ms-3">
             <div className=" py-2">
               <h3 id="titulo3">Ingresa tus datos</h3>
             </div>
@@ -200,54 +200,66 @@ export default function Registro() {
               >
                 {errors.edad}
               </div>{" "}
-            </div>
-            <div className="col-12 mt-2">
-              <select
-                className="form-select opacity-75"
-                aria-label="Default select example"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                name="genero"
-                id="genero"
-              >
-                <option value="">Tu genero</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-                <option value="Prefiero no especificar">
-                  Prefiero no especificar
-                </option>
-              </select>
-            </div>
-            <input
-              type="text"
-              className={
-                errors.nickname && touched.nickname
-                  ? "form-control is-invalid"
-                  : "form-control opacity-75"
-              }
-              value={values.nickname}
-              name="nickname"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              placeholder="Nickname"
-              id="nickname"
-            />
-            <div
-              className={
-                errors.nombre && touched.nombre
-                  ? "invalid-feeback is-invalid"
-                  : ""
-              }
-              id="input-error"
-            >
-              {" "}
-              {errors.nombre}
+              <div className="col-12 ">
+                <select
+                  className="form-select opacity-75"
+                  aria-label="Default select example"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  name="genero"
+                  id="genero"
+                >
+                  <option value="">Tu genero</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Prefiero no especificar">
+                    Prefiero no especificar
+                  </option>
+                </select>
+                <div
+                  className={
+                    errors.genero && touched.genero
+                      ? "invalid-feeback is-invalid"
+                      : ""
+                  }
+                  id="input-error"
+                >
+                  {errors.genero}
+                </div>{" "}
+              </div>
+              <div>
+                <input
+                  type="text"
+                  className={
+                    errors.nickname && touched.nickname
+                      ? "form-control is-invalid"
+                      : "form-control opacity-75"
+                  }
+                  value={values.nickname}
+                  name="nickname"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Nickname"
+                  id="nickname"
+                />
+                <div
+                  className={
+                    errors.nombre && touched.nombre
+                      ? "invalid-feeback is-invalid"
+                      : ""
+                  }
+                  id="input-error"
+                >
+                  {" "}
+                  {errors.nickname}
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div>
-          <div className="mt-5 mb-4" id="plataforma-posicion">
+          <div className="mt-5 mb-4 ms-3" id="plataforma-posicion">
             <h2 id="titulo2"> Selecciona tu Plataforma</h2>
           </div>
 
@@ -268,7 +280,7 @@ export default function Registro() {
           </div>
         </div>
         <div>
-          <div className="mt-5 mb-4" id="genero-posicion">
+          <div className="mt-5 mb-4 ms-3" id="genero-posicion">
             <h2 id="titulo2"> Selecciona un genero de juego</h2>
           </div>
 
@@ -289,31 +301,30 @@ export default function Registro() {
           </div>
         </div>
 
-        <div>
-          <div>
-            <h2 id="titulo2">Selecciona tus Juegos</h2>
-          </div>
+        <div className="ms-3 mt-5">
+          <h2 id="titulo2">Selecciona tus Juegos</h2>
         </div>
-        <div className="d-flex flex-wrap d-grid gap-2 col-8">
+        <div className="d-flex flex-wrap d-grid gap-2 col-8 ms-3">
           {juegos.map((juego, index) => (
             <div key={index}>
               <div className="py-3 mt-4 mb-4 ">
-                <div
-                  className="card "
-                  id="card-juegos"
-                  style={{ width: "24rem" }}
-                >
+                <div className="card card-juegos" style={{ width: "14rem" }}>
                   <img
                     src="src/assets/Imagenes/warzone.jpg"
                     className="card-img-top"
                     alt=".."
                   />
                   <div className="card-body">
-                    <h3 className="card-text" id="titulo3">
+                    <h4 className="card-text text-white" id="titulo3">
                       {juego.nombre}
-                    </h3>
-                    <h6 className="text-white">{juego.plataforma}</h6>
-                    <h6 className="text-white">{juego.genero}</h6>
+                    </h4>
+                    <h6 className="text-secondary">{juego.plataforma}</h6>
+                    <h6 className="text-secondary">{juego.genero}</h6>
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value=""
+                    ></input>
                   </div>
                 </div>
               </div>
