@@ -3,12 +3,10 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { BasicFormSchema } from "./RegistroSchema";
 import { useAuthContext } from "../../Context/AuthContext";
-import { useNavigate } from "react-router-dom";
 
 export default function Registro() {
-  const { authorization } = useAuthContext();
-
   const [juegos, setJuego] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,7 +19,7 @@ export default function Registro() {
     };
     fetchData();
   }, []);
-  async function onSubmit(values, actions) {
+  function onSubmit(values, actions) {
     fetch("http://localhost:3000/user", {
       method: "POST",
       headers: {
@@ -40,7 +38,6 @@ export default function Registro() {
     });
     console.log(values);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
     actions.resetForm();
   }
 

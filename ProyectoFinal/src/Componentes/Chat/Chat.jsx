@@ -29,7 +29,7 @@ export default function Chat() {
       <div className="d-flex justify-content-center mt-5 ">
         <div className="col-4">
           <h1>Chat App</h1>
-          <div className="form-floating">
+          <div className="form-floating col-6">
             <input
               placeholder="Room"
               className="form-control"
@@ -42,7 +42,7 @@ export default function Chat() {
             Join
           </button>
 
-          <div className="form-floating">
+          <div className="form-floating col-6">
             <input
               type="text"
               className="form-control"

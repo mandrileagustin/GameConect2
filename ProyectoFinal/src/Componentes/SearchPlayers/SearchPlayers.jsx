@@ -1,12 +1,36 @@
 import { useFormik } from "formik";
+import { useEffect, useState } from "react";
 import { useAuthContext } from "../../Context/AuthContext";
+import BuscandoJugador from "../BuscandoJugador/BuscandoJugador";
 import { BasicFormSchema } from "./SeacrhPlayerSchema";
 
 export default function SearchPlayers() {
-  const { authorization } = useAuthContext();
-  async function onSubmit(values, actions) {
+  const [plataforma, setPlataforma] = useState([]);
+  // const [juego, setJuego] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:3000/juegos/match`);
+  //       const data = await response.json();
+  //       setJuego(data);
+
+  //       const responsePlataforma = await fetch(
+  //         `http://localhost:3000/juegos/match`
+  //       );
+  //       const dataPlataforma = await responsePlataforma.json();
+  //       setPlataforma(dataPlataforma);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //     console.log();
+  //   };
+  //   fetchData();
+  // }, []);
+
+  function onSubmit(values, actions) {
     fetch(`http://localhost:3000/juegos/match`, {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-type": "application/json",
       },
@@ -16,17 +40,24 @@ export default function SearchPlayers() {
       if (response.status === 400) {
         alert("error al recibir el body");
       } else if (response.status === 200) {
-        alert(`usuario ${values.comentario} registrado correctamente`);
+        setPlataforma(values);
       } else if (response.status === 409) {
         alert("usuario ya registrado");
       }
     });
     console.log(values);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
     actions.resetForm();
   }
-  const { handleBlur, handleChange, handleSubmit, isSubmitting } = useFormik({
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isSubmitting,
+  } = useFormik({
     initialValues: {
       plataforma: "",
       juego: "",
@@ -59,6 +90,10 @@ export default function SearchPlayers() {
               <select
                 className="form-select"
                 aria-label="Default select example"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                name="juego"
+                id="juego"
               >
                 <option value="">Juego</option>
                 <option value="Call of Duty">Call of Duty</option>
@@ -81,6 +116,11 @@ export default function SearchPlayers() {
             <h1>Encuentra tu compañero ideal</h1>
           </div>
         </form>
+
+        <BuscandoJugador
+          plataforma={plataforma.plataforma}
+          juego={plataforma.juego}
+        />
       </div>
     </>
   );
