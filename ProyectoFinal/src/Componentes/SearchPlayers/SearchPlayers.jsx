@@ -1,32 +1,11 @@
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
-import { useAuthContext } from "../../Context/AuthContext";
+import { useState } from "react";
+
 import BuscandoJugador from "../BuscandoJugador/BuscandoJugador";
 import { BasicFormSchema } from "./SeacrhPlayerSchema";
 
 export default function SearchPlayers() {
   const [plataforma, setPlataforma] = useState([]);
-  // const [juego, setJuego] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch(`http://localhost:3000/juegos/match`);
-  //       const data = await response.json();
-  //       setJuego(data);
-
-  //       const responsePlataforma = await fetch(
-  //         `http://localhost:3000/juegos/match`
-  //       );
-  //       const dataPlataforma = await responsePlataforma.json();
-  //       setPlataforma(dataPlataforma);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //     console.log();
-  //   };
-  //   fetchData();
-  // }, []);
 
   function onSubmit(values, actions) {
     fetch(`http://localhost:3000/juegos/match`, {
@@ -110,7 +89,6 @@ export default function SearchPlayers() {
                 Buscar jugador
               </button>
             </div>
-            <div className="card-footer text-muted"></div>
           </div>
           <div className="col-3">
             <h1>Encuentra tu compañero ideal</h1>
@@ -120,6 +98,7 @@ export default function SearchPlayers() {
         <BuscandoJugador
           plataforma={plataforma.plataforma}
           juego={plataforma.juego}
+          nickname={plataforma.nickname}
         />
       </div>
     </>

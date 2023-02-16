@@ -30,8 +30,8 @@ dao.getJuegoById = async (id) => await juegosQueris.getJuegoById(id);
 
 dao.getJuego = async () => await juegosQueris.getJuego();
 
-dao.matchJuego = async (plataforma, idJuego) =>
-  await juegosQueris.matchJuego(plataforma, idJuego);
+dao.matchJuego = async (plataforma, juego) =>
+  await juegosQueris.matchJuego(plataforma, juego);
 
 dao.getJuegoByName = async (name) => await juegosQueris.getJuegoByName(name);
 

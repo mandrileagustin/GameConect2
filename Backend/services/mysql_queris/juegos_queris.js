@@ -3,13 +3,13 @@ import db from "../mysql.js";
 const JuegosQueris = {};
 
 ///Juegos
-JuegosQueris.matchJuego = async (plataforma, idJuego) => {
+JuegosQueris.matchJuego = async (plataforma, juego) => {
   let conn = null;
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM usuario join juegosusuarios on usuario.id = juegosusuarios.idUsuario where plataforma = ? and idJuego = ?",
-      [plataforma, idJuego],
+      "SELECT * FROM usuario JOIN juegosusuarios ON usuario.id = juegosusuarios.idUsuario WHERE plataforma = ? and idJuego = (SELECT id FROM juegos WHERE nombre = ?) ",
+      [plataforma, juego],
       "select",
       conn
     );
