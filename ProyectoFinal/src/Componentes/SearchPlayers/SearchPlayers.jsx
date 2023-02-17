@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import BuscandoJugador from "../BuscandoJugador/BuscandoJugador";
 import { BasicFormSchema } from "./SeacrhPlayerSchema";
@@ -7,7 +8,25 @@ import { BasicFormSchema } from "./SeacrhPlayerSchema";
 export default function SearchPlayers() {
   const [plataforma, setPlataforma] = useState([]);
 
-  function onSubmit(values, actions) {
+  const [userNickname, setUserNickname] = useState("");
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fechData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/user/${id}`);
+        const data = await response.json();
+        setUserNickname(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fechData();
+  }, []);
+
+  async function onSubmit(values, actions) {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     fetch(`http://localhost:3000/juegos/match`, {
       method: "POST",
       headers: {
@@ -44,6 +63,7 @@ export default function SearchPlayers() {
     validationSchema: BasicFormSchema,
     onSubmit,
   });
+
   return (
     <>
       <div className=" d-flex justify-content-center mt-5 d-grid gap-4 align-content-center">
@@ -98,7 +118,7 @@ export default function SearchPlayers() {
         <BuscandoJugador
           plataforma={plataforma.plataforma}
           juego={plataforma.juego}
-          nickname={plataforma.nickname}
+          nickname={userNickname.nickname}
         />
       </div>
     </>

@@ -38,6 +38,7 @@ export default function PerfilUsuario() {
           key={postUsuario.id}
           comentario={postUsuario.comentario}
           postPath={postUsuario.path}
+          nickname={postUsuario.nickname}
         />
       ))}
     </>

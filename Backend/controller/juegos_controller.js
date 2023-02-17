@@ -97,9 +97,9 @@ controller.deleteJuego = async (req, res) => {
 };
 
 controller.matchJuego = async (req, res) => {
-  const { plataforma, juego, nickname } = req.body;
+  const { plataforma, juego } = req.body;
   try {
-    const usuarios = await dao.matchJuego(plataforma, juego, nickname);
+    const usuarios = await dao.matchJuego(plataforma, juego);
 
     // Si no existe devolvemos un 404 (not found)
     // Devolvemos la ruta donde se encuentra la imagen
