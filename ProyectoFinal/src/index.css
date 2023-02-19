@@ -1,1 +1,13 @@
 
+*{
+    
+    font-family: 'Orbitron', sans-serif;
+
+}
+body{
+    background:linear-gradient(70deg, black, rgb(6, 0, 37), rgb(44, 0, 0));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width:100%;
+}

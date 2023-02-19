@@ -16,7 +16,7 @@ export default function Header() {
           <li className="nav-item ">
             <Link
               to="/login"
-              className="btn btn-outline-primary px-5"
+              className="btn btn-outline-primary px-4 me-4"
               aria-current="page"
             >
               Login
