@@ -9,21 +9,20 @@ app.use(cors());
 
 const io = new Server(server, {
   cors: {
-    origin: "http://127.0.0.1:5173",
+    origin: "http://127.0.0.1:5174",
     methods: ["GET", "POST"],
   },
 });
 
 io.on("connection", (socket) => {
-  console.log(`User connected ${socket.id}`);
-
   socket.on("join_room", (data) => {
+    console.log("usuario se a unido al chat");
     socket.join(data);
   });
 
   socket.on("send_message", (data) => {
-    console.log(data);
-    socket.to(data.room).emit("receive_message", data);
+    console.log(data, "mensaje");
+    io.to(data.room).emit("receive_message", data.message);
   });
 });
 

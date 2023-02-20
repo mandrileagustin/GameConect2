@@ -19,9 +19,6 @@ export const BasicFormSchema = yup.object().shape({
     .string()
     .oneOf(["PlayStation", "PC", "Xbox"])
     .required("Requerido"),
-  generoJuego: yup
-    .string()
-    .oneOf(["Rol", "Shooter", "Supervivencia"])
-    .required("Requerido"),
+
   nickname: yup.string().required("Requerido"),
 });

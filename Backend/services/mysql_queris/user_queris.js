@@ -44,6 +44,28 @@ userQueris.addUser = async (userData) => {
     conn && (await conn.end());
   }
 };
+userQueris.addUserJuegos = async (userData) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+
+    let userObj = {
+      idUsuario: userData.idUsuario,
+      idJuego: userData.idJuego,
+    };
+
+    return await db.query(
+      "INSERT INTO juegosusuarios SET ?",
+      userObj,
+      "insert",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 userQueris.deleteUser = async (id) => {
   let conn = null;

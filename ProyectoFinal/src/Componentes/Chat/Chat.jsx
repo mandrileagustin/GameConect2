@@ -1,27 +1,24 @@
 import io from "socket.io-client";
 import { useEffect, useState } from "react";
 
-const socket = io.connect("http://localhost:3001");
 export default function Chat() {
-  // Salas
-  const [room, setRoom] = useState("");
-
+  const socket = io.connect("http://localhost:3001");
   //Mensages
   const [message, setMessage] = useState("");
   const [messageReceived, setMessageReceived] = useState("");
+
   const joinRoom = () => {
-    if (room !== "") {
-      socket.emit("join_room", room);
-    }
+    socket.emit("join_room", "sala1");
   };
 
   const sendMessage = () => {
-    socket.emit("send_message", { message, room });
+    socket.emit("send_message", { message, room: "sala1" });
   };
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessageReceived(data.message);
+      console.log(data);
+      setMessageReceived(data);
     });
   }, [socket]);
   return (
@@ -29,15 +26,7 @@ export default function Chat() {
       <div className="d-flex justify-content-center mt-5 ">
         <div className="col-4">
           <h1>Chat App</h1>
-          <div className="form-floating col-6">
-            <input
-              placeholder="Room"
-              className="form-control"
-              onChange={(e) => {
-                setRoom(e.target.value);
-              }}
-            />
-          </div>
+
           <button onClick={joinRoom} className="btn btn-outline-primary">
             Join
           </button>

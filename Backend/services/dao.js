@@ -2,12 +2,16 @@ import userQueris from "./mysql_queris/user_queris.js";
 import juegosQueris from "./mysql_queris/juegos_queris.js";
 import imagenQueris from "./mysql_queris/imagen_queris.js";
 import postQueris from "./mysql_queris/post_queris.js";
+import chatQueris from "./mysql_queris/chat_queris.js";
 
 const dao = {};
 ///Usuarios
 dao.getUserByEmail = async (email) => await userQueris.getUserByEmail(email);
 
 dao.addUser = async (userData) => await userQueris.addUser(userData);
+
+dao.addUserJuegos = async (userData) =>
+  await userQueris.addUserJuegos(userData);
 
 dao.getUserById = async (id) => await userQueris.getUserById(id);
 
@@ -54,3 +58,5 @@ dao.deletePost = async (id) => await postQueris.deletePost(id);
 dao.getPostByIdUsuario = async (idUsuario) =>
   await postQueris.getPostByIdUsuario(idUsuario);
 export default dao;
+//Chat
+dao.getChatById = async (id) => await chatQueris.getChatById(id);

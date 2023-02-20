@@ -2,8 +2,7 @@ import "./Registro.css";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { BasicFormSchema } from "./RegistroSchema";
-import { useAuthContext } from "../../Context/AuthContext";
-
+import { useParams } from "react-router-dom";
 export default function Registro() {
   const [juegos, setJuego] = useState([]);
 
@@ -58,7 +57,6 @@ export default function Registro() {
       edad: "",
       genero: "",
       plataforma: "",
-      generoJuego: "",
       nickname: "",
     },
     validationSchema: BasicFormSchema,
@@ -71,13 +69,13 @@ export default function Registro() {
   //   }, [authorization]);
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <div className="card-body mb-3 card-registro px-2 py-2 mt-3 ms-3">
-            <div className=" py-2">
+      <div className="d-flex justify-content-center flex-row">
+        <form onSubmit={handleSubmit}>
+          <div className=" card-registro">
+            <div className="">
               <h3 id="titulo3">Ingresa tus datos</h3>
             </div>
-            <div className=" d-grid gap-2 border-rounded-6 ">
+            <div className=" d-grid gap-2">
               <input
                 type="text"
                 className={
@@ -200,33 +198,6 @@ export default function Registro() {
               >
                 {errors.edad}
               </div>{" "}
-              <div className="col-12 ">
-                <select
-                  className="form-select opacity-75"
-                  aria-label="Default select example"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  name="genero"
-                  id="genero"
-                >
-                  <option value="">Tu genero</option>
-                  <option value="Masculino">Masculino</option>
-                  <option value="Femenino">Femenino</option>
-                  <option value="Prefiero no especificar">
-                    Prefiero no especificar
-                  </option>
-                </select>
-                <div
-                  className={
-                    errors.genero && touched.genero
-                      ? "invalid-feeback is-invalid"
-                      : ""
-                  }
-                  id="input-error"
-                >
-                  {errors.genero}
-                </div>{" "}
-              </div>
               <div>
                 <input
                   type="text"
@@ -254,60 +225,64 @@ export default function Registro() {
                   {errors.nickname}
                 </div>
               </div>
+              <div className="col-12 ">
+                <select
+                  className="form-select opacity-75"
+                  aria-label="Default select example"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  name="genero"
+                  id="genero"
+                >
+                  <option value="">Tu genero</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Prefiero no especificar">
+                    Prefiero no especificar
+                  </option>
+                </select>
+                <div
+                  className={
+                    errors.genero && touched.genero
+                      ? "invalid-feeback is-invalid"
+                      : ""
+                  }
+                  id="input-error"
+                >
+                  {errors.genero}
+                </div>{" "}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <div className="mt-5 mb-4 ms-3" id="plataforma-posicion">
-            <h2 id="titulo2"> Selecciona tu Plataforma</h2>
+          <div>
+            <div className="mt-5 mb-4 ms-3" id="plataforma-posicion">
+              <h2 id="titulo2"> Selecciona tu Plataforma</h2>
+            </div>
+
+            <div className="col-6 ms-5">
+              <select
+                className="form-select opacity-75"
+                aria-label="Default select example"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                name="plataforma"
+                id="plataforma"
+              >
+                <option value="">Plataforma</option>
+                <option value="PlayStation">PlayStation</option>
+                <option value="Xbox">Xbox</option>
+                <option value="PC">PC</option>
+              </select>
+            </div>
           </div>
 
-          <div className="col-6 ms-5">
-            <select
-              className="form-select opacity-75"
-              aria-label="Default select example"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              name="plataforma"
-              id="plataforma"
-            >
-              <option value="">Plataforma</option>
-              <option value="PlayStation">PlayStation</option>
-              <option value="Xbox">Xbox</option>
-              <option value="PC">PC</option>
-            </select>
+          <div className="ms-3 mt-5">
+            <h2 id="titulo2">Selecciona tus Juegos</h2>
           </div>
-        </div>
-        <div>
-          <div className="mt-5 mb-4 ms-3" id="genero-posicion">
-            <h2 id="titulo2"> Selecciona un genero de juego</h2>
-          </div>
-
-          <div className="col-6 ms-5">
-            <select
-              className="form-select opacity-75"
-              aria-label="Default select example"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              name="generoJuego"
-              id="generoJuego"
-            >
-              <option value="">Genero</option>
-              <option value="Rol">Rol</option>
-              <option value="Shooter">Shooter</option>
-              <option value="Supervivencia">Supervivencia</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="ms-3 mt-5">
-          <h2 id="titulo2">Selecciona tus Juegos</h2>
-        </div>
-        <div className="d-flex flex-wrap d-grid gap-2 col-8 ms-3">
-          {juegos.map((juego, index) => (
-            <div key={index}>
-              <div className="py-3 mt-4 mb-4 ">
+          <div className="d-flex flex-wrap d-grid gap-2 col-8 ms-3">
+            {juegos.map((juego, index) => (
+              <div key={index}>
                 <div className="card card-juegos" style={{ width: "14rem" }}>
                   <img
                     src="src/assets/Imagenes/warzone.jpg"
@@ -323,23 +298,24 @@ export default function Registro() {
                     <input
                       className="form-check-input"
                       type="checkbox"
-                      value=""
+                      value={index}
+                      name="idJuego"
                     ></input>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <button
-          className="btn btn-outline-primary"
-          disabled={isSubmitting}
-          type="submit"
-        >
-          Registrate
-        </button>
-        <pre>{JSON.stringify({ values, errors })}</pre>
-      </form>
+            ))}
+          </div>
+          <button
+            className="btn btn-outline-primary"
+            disabled={isSubmitting}
+            type="submit"
+          >
+            Registrate
+          </button>
+          {/* <pre>{JSON.stringify({ values, errors })}</pre> */}
+        </form>
+      </div>
     </>
   );
 }
