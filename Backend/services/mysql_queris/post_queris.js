@@ -21,12 +21,22 @@ PostQueris.getPost = async () => {
   }
 };
 
-PostQueris.addPost = async (postData) => {
+PostQueris.addPost = async (id, postData) => {
   let conn = null;
   try {
     conn = await db.createConnection();
 
-    return await db.query("INSERT INTO post SET ?", postData, "insert", conn);
+    let postObj = {
+      path: postData.path,
+      comentario: postData.comentario,
+      idUsuario: id,
+    };
+    return await db.query(
+      "INSERT INTO post SET ?",
+      [postObj, id],
+      "insert",
+      conn
+    );
   } catch (e) {
     throw new Error(e);
   } finally {

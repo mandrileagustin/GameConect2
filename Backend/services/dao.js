@@ -20,6 +20,10 @@ dao.deleteUser = async (id) => await userQueris.deleteUser(id);
 dao.updateUser = async (id, userData) =>
   await userQueris.updateUser(id, userData);
 
+// Añadir datos de la imagen subida al servidor
+dao.updateImage = async (id, imageData) =>
+  await userQueris.updateImage(id, imageData);
+
 ///Imagenes
 dao.addImage = async (imageData) => await imagenQueris.addImage(imageData);
 
@@ -42,7 +46,7 @@ dao.getJuegoByName = async (name) => await juegosQueris.getJuegoByName(name);
 dao.deleteJuego = async (id) => await juegosQueris.deleteJuego(id);
 
 ///Posts
-dao.addPost = async (postData) => await postQueris.addPost(postData);
+dao.addPost = async (id, postData) => await postQueris.addPost(id, postData);
 
 dao.getPostById = async (id) => await postQueris.getPostById(id);
 
@@ -57,6 +61,8 @@ dao.deletePost = async (id) => await postQueris.deletePost(id);
 
 dao.getPostByIdUsuario = async (idUsuario) =>
   await postQueris.getPostByIdUsuario(idUsuario);
-export default dao;
 //Chat
 dao.getChatById = async (id) => await chatQueris.getChatById(id);
+
+dao.addRoom = async (userData) => await chatQueris.addRoom(userData);
+export default dao;

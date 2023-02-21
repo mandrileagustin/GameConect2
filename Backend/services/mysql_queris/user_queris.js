@@ -133,4 +133,25 @@ userQueris.updateUser = async (id, userData) => {
     conn && (await conn.end());
   }
 };
+
+userQueris.updateImage = async (id, imageData) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+
+    let userObj = {
+      avatar: imageData.avatar,
+    };
+    return await db.query(
+      "Update usuario SET ? WHERE id = ?",
+      [userObj, id],
+      "update",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 export default userQueris;

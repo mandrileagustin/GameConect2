@@ -1,18 +1,18 @@
 import io from "socket.io-client";
 import { useEffect, useState } from "react";
 
-export default function Chat() {
+export default function Chat({ chat }) {
   const socket = io.connect("http://localhost:3001");
   //Mensages
   const [message, setMessage] = useState("");
   const [messageReceived, setMessageReceived] = useState("");
 
   const joinRoom = () => {
-    socket.emit("join_room", "sala1");
+    socket.emit("join_room", chat);
   };
 
   const sendMessage = () => {
-    socket.emit("send_message", { message, room: "sala1" });
+    socket.emit("send_message", { message, room: chat });
   };
 
   useEffect(() => {

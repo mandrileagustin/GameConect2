@@ -30,7 +30,7 @@ export default function Registro() {
       if (response.status === 400) {
         alert("error al recibir el body");
       } else if (response.status === 200) {
-        alert(`usuario ${values.nombre} registrado correctamente`);
+        alert(`Se a creado una sala `);
       } else if (response.status === 409) {
         alert("usuario ya registrado");
       }

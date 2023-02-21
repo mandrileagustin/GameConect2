@@ -22,7 +22,11 @@ export default function Home() {
     <>
       <CardPublicar />
       {allUserPost.map((postUsers) => (
-        <TarjetaPost key={postUsers.id} comentario={postUsers.comentario} />
+        <TarjetaPost
+          key={postUsers.id}
+          comentario={postUsers.comentario}
+          path={postUsers.path}
+        />
       ))}
     </>
   );

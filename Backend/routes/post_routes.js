@@ -3,7 +3,7 @@ import PostController from "../controller/post_controller.js";
 
 const PostRouter = express.Router();
 
-PostRouter.patch("/addPost/:id", PostController.addPost);
+PostRouter.post("/addPost/:id", PostController.addPost);
 
 PostRouter.get("/post/:id", PostController.getPostById);
 
