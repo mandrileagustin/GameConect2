@@ -43,11 +43,11 @@ export default function Comentario() {
   });
   return (
     <>
-      <div className="d-flex justify-content-center  mt-5">
+      <div className="d-flex justify-content-center mt-5">
         <form onSubmit={handleSubmit}>
-          <div className="card">
+          <div className="card" style={{ width: "40rem" }}>
             <div className="card-header">Publicar</div>
-            <div className="card-body">
+            <div className="card-body  d-grid gap-4">
               <textarea
                 type="text"
                 className={

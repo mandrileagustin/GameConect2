@@ -31,6 +31,7 @@ JuegosQueris.getJuego = async () => {
     conn && (await conn.end());
   }
 };
+
 JuegosQueris.addJuego = async (juegoData) => {
   let conn = null;
   try {

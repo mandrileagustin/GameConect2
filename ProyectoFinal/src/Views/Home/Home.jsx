@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CardPublicar from "../../Componentes/CardPublicar/CardPublicar";
 import TarjetaPost from "../../Componentes/TrajetaPostUsuario/TarjetaPostUsuario";
+import Footer from "../../Componentes/Footer/Footer";
 
 export default function Home() {
   const [allUserPost, setAllUserPost] = useState([]);
@@ -26,8 +27,10 @@ export default function Home() {
           key={postUsers.id}
           comentario={postUsers.comentario}
           path={postUsers.path}
+          nickname={postUsers.nickname}
         />
       ))}
+      <Footer />
     </>
   );
 }

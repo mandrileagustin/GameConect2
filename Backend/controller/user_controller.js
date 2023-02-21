@@ -6,8 +6,16 @@ import { SignJWT, jwtVerify } from "jose";
 const controller = {};
 const __dirname = currentDir().__dirname;
 controller.addUser = async (req, res) => {
-  const { nombre, email, password, apellido, plataforma, genero, nickname } =
-    req.body;
+  const {
+    nombre,
+    email,
+    password,
+    apellido,
+    plataforma,
+    genero,
+    nickname,
+    juegos,
+  } = req.body;
 
   if (
     !nombre ||
@@ -27,8 +35,11 @@ controller.addUser = async (req, res) => {
 
     const addUser = await dao.addUser(req.body);
 
-    await dao.addUserJuegos({
-      idUsuario: addUser,
+    juegos.map(async function (id) {
+      await dao.addUserJuegos({
+        idUsuario: addUser,
+        idJuego: Number(id.juego),
+      });
     });
 
     return res.send(`Usuario ${nombre} con id: ${addUser}registrado`);
@@ -171,6 +182,21 @@ controller.updateImage = async (req, res) => {
       });
     });
     return res.send("Imagen subida!");
+  } catch (e) {
+    console.log(e.message);
+    return res.status(400).send(e.message);
+  }
+};
+
+controller.getJuegosByIdUsuario = async (req, res) => {
+  const idUsuario = req.params.idUsuario;
+  try {
+    // Buscamos si el id de la imagen existe en la base de datos
+    const post = await dao.getJuegosByIdUsuario(idUsuario);
+    // Si no existe devolvemos un 404 (not found)
+    if (post.length <= 0) return res.status(404).send("el juego no existe");
+    // Devolvemos la ruta donde se encuentra la imagen
+    return res.send(post);
   } catch (e) {
     console.log(e.message);
     return res.status(400).send(e.message);

@@ -1,36 +1,62 @@
 import "./Registro.css";
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { useState, useRef } from "react";
 import { BasicFormSchema } from "./RegistroSchema";
-import { useParams } from "react-router-dom";
-export default function Registro() {
-  const [juegos, setJuego] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/juegos`);
-        const data = await response.json();
-        setJuego(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+const Juegos = {
+  2: "Elden Ring",
+  5: "Call of Duty",
+  6: "Day Z",
+  7: "Valorant",
+  8: "LOL",
+  9: "Battlefield 1",
+};
+export default function Registro() {
+  const JuegosRef = useRef();
+  const [checkValues, setCheckValues] = useState([]);
+  const [toogle, setToogle] = useState(false);
+
+  function handleCheck(e) {
+    e.preventDefault();
+    const values = [
+      ...checkValues,
+      {
+        juego: JuegosRef.current.value || "",
+      },
+    ];
+    setCheckValues(values);
+    setToogle(false);
+  }
+
+  function addBtn(e) {
+    e.preventDefault();
+    setToogle(true);
+  }
+
+  function handleDelete(e, index) {
+    const values = [...checkValues];
+    values.splice(index, 1);
+    setCheckValues(values);
+  }
+
   function onSubmit(values, actions) {
+    const user = {
+      ...values,
+      juegos: checkValues,
+    };
+
     fetch("http://localhost:3000/user", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify(user),
     }).then((response) => {
       console.log(values);
       if (response.status === 400) {
         alert("error al recibir el body");
       } else if (response.status === 200) {
-        alert(`Se a creado una sala `);
+        alert(`Usuario registrado correctamente`);
       } else if (response.status === 409) {
         alert("usuario ya registrado");
       }
@@ -58,6 +84,7 @@ export default function Registro() {
       genero: "",
       plataforma: "",
       nickname: "",
+      idJuego: "",
     },
     validationSchema: BasicFormSchema,
     onSubmit,
@@ -69,13 +96,13 @@ export default function Registro() {
   //   }, [authorization]);
   return (
     <>
-      <div className="d-flex justify-content-center flex-row">
+      <div className="">
         <form onSubmit={handleSubmit}>
           <div className=" card-registro">
-            <div className="">
-              <h3 id="titulo3">Ingresa tus datos</h3>
+            <div>
+              <h3>Ingresa tus datos</h3>
             </div>
-            <div className=" d-grid gap-2">
+            <div className="">
               <input
                 type="text"
                 className={
@@ -256,11 +283,11 @@ export default function Registro() {
           </div>
 
           <div>
-            <div className="mt-5 mb-4 ms-3" id="plataforma-posicion">
-              <h2 id="titulo2"> Selecciona tu Plataforma</h2>
+            <div className="">
+              <h2 className="text-white"> Selecciona tu Plataforma</h2>
             </div>
 
-            <div className="col-6 ms-5">
+            <div className="col-4">
               <select
                 className="form-select opacity-75"
                 aria-label="Default select example"
@@ -277,35 +304,59 @@ export default function Registro() {
             </div>
           </div>
 
-          <div className="ms-3 mt-5">
-            <h2 id="titulo2">Selecciona tus Juegos</h2>
+          <div className="">
+            <h2 className="text-white">Selecciona tus Juegos</h2>
           </div>
-          <div className="d-flex flex-wrap d-grid gap-2 col-8 ms-3">
-            {juegos.map((juego, index) => (
+          <ul>
+            {checkValues.map((Obj, index) => (
               <div key={index}>
-                <div className="card card-juegos" style={{ width: "14rem" }}>
-                  <img
-                    src="src/assets/Imagenes/warzone.jpg"
-                    className="card-img-top"
-                    alt=".."
-                  />
-                  <div className="card-body">
-                    <h4 className="card-text text-white" id="titulo3">
-                      {juego.nombre}
-                    </h4>
-                    <h6 className="text-secondary">{juego.plataforma}</h6>
-                    <h6 className="text-secondary">{juego.genero}</h6>
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value={index}
-                      name="idJuego"
-                    ></input>
-                  </div>
-                </div>
+                <h3 className="text-white">{Juegos[Obj.juego]}</h3>
+                <button
+                  onClick={(e) => handleDelete(e, index)}
+                  className="btn btn-outline-primary"
+                >
+                  Eliminar juego
+                </button>
               </div>
             ))}
-          </div>
+          </ul>
+          {!toogle ? (
+            <div>
+              <button
+                onClick={addBtn}
+                type="button"
+                className="btn btn-outline-primary"
+              >
+                Añadir juego
+              </button>
+            </div>
+          ) : (
+            <div>
+              <select
+                className="form-select opacity-75"
+                aria-label="Default select example"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                name="idJuego"
+                ref={JuegosRef}
+              >
+                <option value="">Selecciona un juego</option>
+                <option value={2}>Elden Ring</option>
+                <option value={5}>Call of Duty</option>
+                <option value={6}>Day Z</option>
+                <option value={7}>LOL</option>
+                <option value={8}>Valorant</option>
+                <option value={9}>Battlefield 1</option>
+              </select>
+              <button
+                onClick={handleCheck}
+                type="button"
+                className="btn btn-outline-primary"
+              >
+                Añadir
+              </button>
+            </div>
+          )}
           <button
             className="btn btn-outline-primary"
             disabled={isSubmitting}

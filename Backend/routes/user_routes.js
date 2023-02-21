@@ -8,4 +8,5 @@ userRouter.delete("/:id", userController.deleteUser);
 userRouter.patch("/:id", userController.updateUser);
 userRouter.get("/:id", userController.getUserById);
 userRouter.post("/imagen/:id", userController.updateImage);
+userRouter.get("/juegoUsuario/:idUsuario", userController.getJuegosByIdUsuario);
 export default userRouter;

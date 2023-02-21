@@ -9,7 +9,7 @@ PostQueris.getPost = async () => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM post WHERE id  ORDER BY id DESC",
+      "SELECT * FROM post join usuario on post.idUsuario = usuario.id where idUsuario = ?",
       [],
       "select",
       conn
@@ -66,7 +66,7 @@ PostQueris.getPostByIdUsuario = async (idUsuario) => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM post WHERE idUsuario = ?",
+      "SELECT * FROM post join usuario on post.idUsuario = usuario.id where idUsuario = ?",
       idUsuario,
       "select",
       conn

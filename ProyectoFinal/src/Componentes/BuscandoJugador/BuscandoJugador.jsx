@@ -4,7 +4,6 @@ import { BasicFormSchema } from "./BuscandoJugadorSchema";
 
 export default function BuscandoJugador({ plataforma, juego, nickname }) {
   async function onSubmit(values, action) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
     fetch("http://localhost:3000/chat/addRoom", {
       method: "POST",
       headers: {
@@ -92,9 +91,9 @@ export default function BuscandoJugador({ plataforma, juego, nickname }) {
               {" "}
               {errors.nombre}
             </div>
-            <Link className="btn btn-primary" to="/chat" type="submit">
+            <button className="btn btn-primary" to="/chat" type="submit">
               Crear Sala
-            </Link>
+            </button>
           </form>
         </div>
       </div>

@@ -20,6 +20,9 @@ dao.deleteUser = async (id) => await userQueris.deleteUser(id);
 dao.updateUser = async (id, userData) =>
   await userQueris.updateUser(id, userData);
 
+dao.getJuegosByIdUsuario = async (idUsuario) =>
+  await userQueris.getJuegosByIdUsuario(idUsuario);
+
 // Añadir datos de la imagen subida al servidor
 dao.updateImage = async (id, imageData) =>
   await userQueris.updateImage(id, imageData);

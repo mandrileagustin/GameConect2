@@ -44,6 +44,7 @@ userQueris.addUser = async (userData) => {
     conn && (await conn.end());
   }
 };
+
 userQueris.addUserJuegos = async (userData) => {
   let conn = null;
   try {
@@ -152,6 +153,23 @@ userQueris.updateImage = async (id, imageData) => {
     throw new Error(e);
   } finally {
     conn && (await conn.end());
+  }
+};
+
+userQueris.getJuegosByIdUsuario = async (idUsuario) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM juegosusuarios join juegos on juegos.id = juegosusuarios.idJuego where idUsuario = ?",
+      idUsuario,
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end);
   }
 };
 export default userQueris;
