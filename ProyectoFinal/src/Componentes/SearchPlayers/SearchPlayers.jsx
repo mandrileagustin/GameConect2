@@ -57,6 +57,10 @@ export default function SearchPlayers() {
     plataforma.length > 0 &&
     plataforma.filter((value) => value.idUser !== authorization.id);
 
+  const randomValues =
+    filteredArray.length > 0 &&
+    filteredArray[Math.floor(Math.random() * filteredArray.length)];
+
   return (
     <>
       <div className=" d-flex justify-content-center mt-5 d-grid gap-4 align-content-center">
@@ -111,10 +115,10 @@ export default function SearchPlayers() {
         </form>
         {plataforma.length > 0 ? (
           <BuscandoJugador
-            plataforma={filteredArray[0].plataforma}
-            juego={filteredArray[0].juego}
-            nickname={filteredArray[0].nickname}
-            idSala={filteredArray[0].idSala}
+            plataforma={randomValues.plataforma}
+            juego={randomValues.juego}
+            nickname={randomValues.nickname}
+            idSala={randomValues.idSala}
           />
         ) : (
           <h3>No hemos encontrado a un jugador con tus filtros</h3>

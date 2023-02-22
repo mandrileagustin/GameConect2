@@ -1,15 +1,20 @@
-export default function TarjetaPost({ comentario, path }) {
+export default function TarjetaPost({ comentario, path, nickname }) {
   return (
     <>
       <div className="d-flex justify-content-center">
-        <div class="card" style={{ width: "18rem" }}>
-          <img
-            src={`http://localhost:3000/${path}`}
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-text">{comentario}</h5>
+        <div className="d-flex justify-content-center mt-3 mb-3 ">
+          <div className="card" style={{ width: "36rem" }}>
+            <img
+              src={`http://localhost:3000/${path}`}
+              className="card-img-top"
+              alt="..."
+            />
+            <div className="card-body">
+              <h3 className="fst-italic">{nickname}</h3>
+              <h5 className="text-secondary">{comentario}</h5>
+              <hr className="border border-primary border-2 opacity-25 w-100" />
+              <button className="btn btn-outline-primary">Me gusta</button>
+            </div>
           </div>
         </div>
       </div>
