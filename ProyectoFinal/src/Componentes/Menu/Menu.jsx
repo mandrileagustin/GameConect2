@@ -36,25 +36,25 @@ export default function Menu() {
         </div>
         <div className="offcanvas-body">
           <div className="text-white d-grid gap-2">
-            <hr className="border border-primary border-2 opacity-25 w-100" />
+            <hr className="border border-danger border-2 opacity-25 w-100" />
             <Link className="text-decoration-none text-white" to="/Home">
               <h3>Feed</h3>
             </Link>
-            <hr className="border border-primary border-2 opacity-25 w-100" />
+            <hr className="border border-danger border-2 opacity-25 w-100" />
             <Link
               className="text-decoration-none text-white"
               to={`/perfilUsuario/${authorization.id}`}
             >
               <h3>Mis Juegos</h3>
             </Link>
-            <hr className="border border-primary border-2 opacity-25 w-100" />
+            <hr className="border border-danger border-2 opacity-25 w-100" />
             <Link
               className="text-decoration-none text-white"
               to="/buscarjugador"
             >
               <h3>Buscar Jugadores</h3>
             </Link>
-            <hr className="border border-primary border-2 opacity-25 w-100" />
+            <hr className="border border-danger border-2 opacity-25 w-100" />
           </div>
           <div className="position-absolute bottom-0 start-0 mb-4 ms-4">
             <Link
@@ -63,7 +63,7 @@ export default function Menu() {
             >
               <h4>Mi perfil</h4>
             </Link>
-            <hr className="border border-primary border-2 opacity-25 w-100" />
+            <hr className="border border-danger border-2 opacity-25 w-100" />
             <Link className="text-decoration-none text-white" to="/login">
               <h4>Logout</h4>
             </Link>

@@ -11,10 +11,7 @@ export const BasicFormSchema = yup.object().shape({
 
   apellido: yup.string().required("Requerido"),
   edad: yup.number().required("Requerido"),
-  genero: yup
-    .string()
-    .oneOf(["Masculino", "Femenino", "Prefiero no especificar"])
-    .required("Requerido"),
+
   plataforma: yup
     .string()
     .oneOf(["PlayStation", "PC", "Xbox"])

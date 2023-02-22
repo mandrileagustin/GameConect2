@@ -36,31 +36,39 @@ export default function PerfilUsuario() {
 
   return (
     <>
-      <Usuario
-        usuario={usuario}
-
-        // pathPost={pathPost}
-      />
-      <div>
-        <h2 className="text-white"> Tus Publicaciones</h2>
-      </div>
-      {postUsuarios.map((postUsuario) => (
-        <TarjetaPostUsuario
-          key={postUsuario.id}
-          comentario={postUsuario.comentario}
-          path={postUsuario.path}
-          nickname={postUsuario.nickname}
-        />
-      ))}
-      <div className="d-grid gap-3">
-        <h2 className="text-white"> Tus Juegos</h2>
-        {juegoUsuarios.map((juegoUsuario) => (
-          <CardJuegos
-            key={juegoUsuario.id}
-            nombre={juegoUsuario.nombre}
-            imagen={juegoUsuario.imagen}
-          />
-        ))}
+      <div className="container">
+        <div className="mb-5">
+          <Usuario usuario={usuario} />
+        </div>
+        <hr className="border border-primary border-2 opacity-25 w-100" />
+        <div>
+          <h2 className="text-white text-center"> Tus Publicaciones</h2>
+        </div>
+        <div className="d-flex flex-wrap d-grid gap-5 justify-content-center">
+          {postUsuarios.map((postUsuario) => (
+            <div>
+              <TarjetaPostUsuario
+                key={postUsuario.id}
+                comentario={postUsuario.comentario}
+                path={postUsuario.path}
+                nickname={postUsuario.nickname}
+              />
+            </div>
+          ))}
+        </div>
+        <hr className="border border-primary border-2 opacity-25 w-100" />
+        <div className="d-grid gap-5">
+          <h2 className="text-white text-center"> Tus Juegos</h2>
+          <div className="d-flex flex-wrap d-grid gap-5 mb-5">
+            {juegoUsuarios.map((juegoUsuario) => (
+              <CardJuegos
+                key={juegoUsuario.id}
+                nombre={juegoUsuario.nombre}
+                imagen={juegoUsuario.imagen}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

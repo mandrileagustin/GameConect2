@@ -12,20 +12,12 @@ controller.addUser = async (req, res) => {
     password,
     apellido,
     plataforma,
-    genero,
+
     nickname,
     juegos,
   } = req.body;
 
-  if (
-    !nombre ||
-    !email ||
-    !password ||
-    !apellido ||
-    !plataforma ||
-    !genero ||
-    !nickname
-  )
+  if (!nombre || !email || !password || !apellido || !plataforma || !nickname)
     return res.status(400).send("Error al recibir el body");
 
   try {

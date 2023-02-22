@@ -3,7 +3,9 @@ import Registro from "../../Componentes/Registro/Registro";
 export default function VistaRegistro() {
   return (
     <>
-      <Registro />
+      <div className="container">
+        <Registro />
+      </div>
     </>
   );
 }
