@@ -101,8 +101,6 @@ controller.matchJuego = async (req, res) => {
   try {
     const usuarios = await dao.matchJuego(plataforma, juego);
 
-    // Si no existe devolvemos un 404 (not found)
-    // Devolvemos la ruta donde se encuentra la imagen
     return res.send(usuarios);
   } catch (e) {
     console.log(e.message);

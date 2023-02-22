@@ -24,11 +24,7 @@ ChatQueris.addRoom = async (userData) => {
   try {
     conn = await db.createConnection();
 
-    let userObj = {
-      nombre: userData.nombre,
-    };
-
-    return await db.query("INSERT INTO chat SET ?", userObj, "insert", conn);
+    return await db.query("INSERT INTO chat SET ?", [userData], "insert", conn);
   } catch (e) {
     throw new Error(e);
   } finally {

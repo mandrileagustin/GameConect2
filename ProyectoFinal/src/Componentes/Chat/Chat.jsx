@@ -2,18 +2,18 @@ import io from "socket.io-client";
 import { useEffect, useState } from "react";
 import "./Chat.css";
 
-export default function Chat(nombre) {
+export default function Chat({ chat }) {
   const socket = io.connect("http://localhost:3001");
   //Mensages
   const [message, setMessage] = useState("");
   const [messageReceived, setMessageReceived] = useState("");
 
   const joinRoom = () => {
-    socket.emit("join_room", nombre);
+    socket.emit("join_room", chat);
   };
 
   const sendMessage = () => {
-    socket.emit("send_message", { message, room: nombre });
+    socket.emit("send_message", { message, room: chat });
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Chat(nombre) {
     <>
       <div className="ubicacion-chat">
         <div className="d-flex flex-column ">
-          <h1>Chat App</h1>
+          <h1>{`Sala: ${chat}`}</h1>
 
           <button onClick={joinRoom} className="btn btn-outline-primary ">
             Join

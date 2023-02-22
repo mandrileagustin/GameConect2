@@ -8,6 +8,13 @@ export const BasicFormSchema = yup.object().shape({
     .required("Requerido"),
   juego: yup
     .string()
-    .oneOf(["Call of Duty", "Elden ring", "Day z", "LoL"])
+    .oneOf([
+      "Call of Duty",
+      "Elden ring",
+      "Day z",
+      "LoL",
+      "Valorant",
+      "Battlefield 1",
+    ])
     .required("Requerido"),
 });

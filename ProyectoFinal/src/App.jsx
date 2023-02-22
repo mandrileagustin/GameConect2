@@ -23,7 +23,7 @@ function App() {
               <Route path="perfilUsuario/:id" element={<PerfilUsuario />} />
               <Route path="/buscarjugador" element={<SearchPlayersVista />} />
 
-              <Route path="chat" element={<ChatVista />} />
+              <Route path="chat/:id" element={<ChatVista />} />
             </Route>
 
             <Route index element={<HomePage />} />

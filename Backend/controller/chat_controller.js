@@ -16,11 +16,16 @@ controller.getChatById = async (req, res) => {
 };
 
 controller.addRoom = async (req, res) => {
+  const { id } = req.params;
   const { nombre } = req.body;
 
   if (!nombre) return res.status(400).send("Error al recibir el body");
+  let chatObj = {
+    nombre: nombre,
+    idUsuario: id,
+  };
 
-  const addRoom = await dao.addRoom(req.body);
+  const addRoom = await dao.addRoom(chatObj);
   if (addRoom) {
     return res.sendStatus(200);
   } else {

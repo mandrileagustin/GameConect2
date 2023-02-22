@@ -1,50 +1,39 @@
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
+import { useAuthContext } from "../../Context/AuthContext";
 import BuscandoJugador from "../BuscandoJugador/BuscandoJugador";
 import { BasicFormSchema } from "./SeacrhPlayerSchema";
 
 export default function SearchPlayers() {
   const [plataforma, setPlataforma] = useState([]);
-
-  const [userNickname, setUserNickname] = useState("");
-
-  const { id } = useParams();
+  const [user, setUser] = useState([]);
+  const { authorization } = useAuthContext();
 
   useEffect(() => {
     const fechData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/user/${id}`);
+        const response = await fetch(
+          `http://localhost:3000/user/${authorization.id}`
+        );
         const data = await response.json();
-        setUserNickname(data);
+        setUser(data);
       } catch (error) {
         console.log(error);
       }
     };
     fechData();
   }, []);
+  console.log(user);
 
   async function onSubmit(values, actions) {
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    fetch(`http://localhost:3000/juegos/match`, {
+    const response = await fetch(`http://localhost:3000/juegos/match`, {
       method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
+      headers: { "Content-type": "application/json" },
       body: JSON.stringify(values),
-    }).then((response) => {
-      console.log(values);
-      if (response.status === 400) {
-        alert("error al recibir el body");
-      } else if (response.status === 200) {
-        setPlataforma(values);
-      } else if (response.status === 409) {
-        alert("usuario ya registrado");
-      }
     });
-    console.log(values);
-
+    const data = await response.json();
+    setPlataforma(data);
     actions.resetForm();
   }
   const {
@@ -99,6 +88,8 @@ export default function SearchPlayers() {
                 <option value="Elden ring">Elden ring</option>
                 <option value="Day z">Day z</option>
                 <option value="LoL">LoL</option>
+                <option value="Valorant">Valorant</option>
+                <option value="Battlefield 1">Batllefield 1</option>
               </select>
 
               <button
@@ -114,12 +105,16 @@ export default function SearchPlayers() {
             <h1>Encuentra tu compañero ideal</h1>
           </div>
         </form>
-
-        <BuscandoJugador
-          plataforma={plataforma.plataforma}
-          juego={plataforma.juego}
-          nickname={userNickname.nickname}
-        />
+        {plataforma.length > 0 ? (
+          <BuscandoJugador
+            plataforma={plataforma[0].plataforma}
+            juego={plataforma[0].juego}
+            nickname={plataforma[0].nickname}
+            idSala={plataforma[0].idSala}
+          />
+        ) : (
+          <h3>No hemos encontrado a un jugador con tus filtros</h3>
+        )}
       </div>
     </>
   );

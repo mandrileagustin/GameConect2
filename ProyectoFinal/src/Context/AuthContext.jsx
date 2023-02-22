@@ -7,6 +7,7 @@ const AuthContext = createContext({
   authorization: {
     email: "null",
     role: "null",
+    id: "null",
   },
   login: () => {},
   logout: () => {},
@@ -20,6 +21,7 @@ export function AuthContextProvider({ children }) {
     JSON.parse(window.localStorage.getItem(MY_AUTH_APP)) ?? {
       email: "null",
       role: "null",
+      id: "null",
     }
   );
   const [errorMessage, setErrorMessage] = useState(null);
@@ -48,6 +50,7 @@ export function AuthContextProvider({ children }) {
     setAuthorization({
       email: null,
       role: null,
+      id: null,
     });
   }
 

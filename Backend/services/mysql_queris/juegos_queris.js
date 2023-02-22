@@ -8,7 +8,7 @@ JuegosQueris.matchJuego = async (plataforma, juego) => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM usuario JOIN juegosusuarios ON usuario.id = juegosusuarios.idUsuario WHERE plataforma = ? AND idJuego = (SELECT id FROM juegos WHERE nombre = ?) ",
+      "SELECT usuario.plataforma, usuario.nickname, usuario.id as idUser, chat.id as idSala, juegos.id as idJuego, juegos.nombre FROM usuario JOIN juegosusuarios ON usuario.id = juegosusuarios.idUsuario join chat on usuario.id = chat.idUsuario join juegos on juegos.id = juegosusuarios.idJuego WHERE usuario.plataforma = ? and juegos.nombre = ?",
       [plataforma, juego],
       "select",
       conn

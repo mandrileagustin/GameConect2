@@ -65,7 +65,7 @@ dao.deletePost = async (id) => await postQueris.deletePost(id);
 dao.getPostByIdUsuario = async (idUsuario) =>
   await postQueris.getPostByIdUsuario(idUsuario);
 //Chat
-dao.getChatById = async (id) => await chatQueris.getChatById(id);
+dao.getChatById = async (idUsuario) => await chatQueris.getChatById(idUsuario);
 
 dao.addRoom = async (userData) => await chatQueris.addRoom(userData);
 export default dao;
