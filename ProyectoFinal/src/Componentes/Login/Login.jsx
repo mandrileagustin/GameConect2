@@ -1,11 +1,18 @@
 import "./Login.css";
 import { useFormik } from "formik";
 import { useAuthContext } from "..//../Context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginSchema } from "./LoginSchema";
+import { useEffect } from "react";
 
 export default function Login() {
-  const { login } = useAuthContext();
+  const { login, authorization } = useAuthContext();
+  const navigate = useNavigate();
+  // useEffect(() => {
+  //   if (authorization) {
+  //     navigate("/home");
+  //   }
+  // }, [authorization]);
 
   async function onSubmit(values, actions) {
     login(values);
@@ -25,6 +32,7 @@ export default function Login() {
     validationSchema: LoginSchema,
     onSubmit,
   });
+
   return (
     <section className="posicion-login d-flex justify-content-center align-items-center">
       <form onSubmit={handleSubmit}>

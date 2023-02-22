@@ -53,13 +53,13 @@ export default function SearchPlayers() {
   });
   console.log(plataforma);
 
-  const filteredArray =
-    plataforma.length > 0 &&
-    plataforma.filter((value) => value.idUser !== authorization.id);
+  // const filteredArray =
+  //   plataforma.length > 0 &&
+  //   plataforma.filter((value) => value.idUser !== authorization.id);
 
-  const randomValues =
-    filteredArray.length > 0 &&
-    filteredArray[Math.floor(Math.random() * filteredArray.length)];
+  // const randomValues =
+  //   filteredArray.length > 0 &&
+  //   filteredArray[Math.floor(Math.random() * filteredArray.length)];
 
   return (
     <>
@@ -114,12 +114,17 @@ export default function SearchPlayers() {
           </div>
         </form>
         {plataforma.length > 0 ? (
-          <BuscandoJugador
-            plataforma={randomValues.plataforma}
-            juego={randomValues.juego}
-            nickname={randomValues.nickname}
-            idSala={randomValues.idSala}
-          />
+          <div>
+            {plataforma.map((jugador) => (
+              <BuscandoJugador
+                key={jugador.id}
+                plataforma={jugador.plataforma}
+                juego={jugador.juego}
+                nickname={jugador.nickname}
+                idSala={jugador.idSala}
+              />
+            ))}
+          </div>
         ) : (
           <h3>No hemos encontrado a un jugador con tus filtros</h3>
         )}

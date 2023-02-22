@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import { BasicFormSchema } from "./PublicarSchema";
 import { useAuthContext } from "../../Context/AuthContext";
+import "./CardPublicar.css";
 
 export default function Comentario() {
   const { authorization } = useAuthContext();
@@ -45,8 +46,8 @@ export default function Comentario() {
     <>
       <div className="d-flex justify-content-center mt-5">
         <form onSubmit={handleSubmit}>
-          <div className="card" style={{ width: "40rem" }}>
-            <div className="card-header">Publicar</div>
+          <div className="card card-comentar" style={{ width: "40rem" }}>
+            <div className="card-header text-white">Publicar</div>
             <div className="card-body  d-grid gap-4">
               <textarea
                 type="text"

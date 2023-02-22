@@ -18,17 +18,15 @@ function App() {
       <AuthContextProvider>
         <BrowserRouter>
           <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="/login" element={<InicioSecion />} />
+            <Route path="/registro" element={<VistaRegistro />} />
             <Route path="/" element={<Layout />}>
               <Route path="home" element={<Home />} />
               <Route path="perfilUsuario/:id" element={<PerfilUsuario />} />
               <Route path="/buscarjugador" element={<SearchPlayersVista />} />
-
               <Route path="chat/:id" element={<ChatVista />} />
             </Route>
-
-            <Route index element={<HomePage />} />
-            <Route path="/login" element={<InicioSecion />} />
-            <Route path="/registro" element={<VistaRegistro />} />
           </Routes>
         </BrowserRouter>
       </AuthContextProvider>

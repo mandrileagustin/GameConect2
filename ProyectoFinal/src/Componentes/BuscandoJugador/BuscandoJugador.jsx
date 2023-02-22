@@ -5,7 +5,6 @@ export default function BuscandoJugador({
   juego,
   nickname,
   idSala,
-  nicknameUsuario,
 }) {
   return (
     <>

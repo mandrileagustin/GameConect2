@@ -1,8 +1,11 @@
 import { useFormik } from "formik";
 import { BasicFormSchema } from "./BuscandoJugadorSchema";
 import { useAuthContext } from "../../Context/AuthContext";
-export default function MenuChat() {
+import { Link } from "react-router-dom";
+
+export default function MenuChat({ idSala }) {
   const { authorization } = useAuthContext();
+
   async function onSubmit(values, action) {
     fetch(`http://localhost:3000/chat/addRoom/${authorization.id}`, {
       method: "POST",
@@ -94,6 +97,9 @@ export default function MenuChat() {
             </button>
           </form>
         </div>
+        <Link className="btn btn-primary" to={`/chat/${idSala}`}>
+          Mi sala
+        </Link>
       </div>
     </div>
   );

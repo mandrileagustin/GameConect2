@@ -7,7 +7,7 @@ ChatQueris.getChatById = async (id) => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM chat WHERE id = ?",
+      "SELECT chat.id as idSala, usuario.nickname, usuario.id as idUsuario FROM chat join usuario on chat.idUsuario = usuario.id where usuario.id = ?",
       id,
       "select",
       conn

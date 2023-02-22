@@ -35,57 +35,38 @@ export default function Menu() {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <div className="text-white d-grid gap-4">
+          <div className="text-white d-grid gap-2">
+            <hr className="border border-primary border-2 opacity-25 w-100" />
             <Link className="text-decoration-none text-white" to="/Home">
-              <h3 id="titulo3">Feed</h3>
+              <h3>Feed</h3>
             </Link>
+            <hr className="border border-primary border-2 opacity-25 w-100" />
             <Link
               className="text-decoration-none text-white"
               to={`/perfilUsuario/${authorization.id}`}
             >
-              <h3 id="titulo3">Mis Juegos</h3>
+              <h3>Mis Juegos</h3>
             </Link>
+            <hr className="border border-primary border-2 opacity-25 w-100" />
             <Link
               className="text-decoration-none text-white"
               to="/buscarjugador"
             >
-              <h3 id="titulo3">Buscar Jugadores</h3>
+              <h3>Buscar Jugadores</h3>
             </Link>
+            <hr className="border border-primary border-2 opacity-25 w-100" />
           </div>
-          <div className="dropdown mt-3 position-absolute bottom-0 start-0 mb-4 ms-4">
-            <button
-              className="btn btn-outline-primary dropdown-toggle btn-lg"
-              type="button"
-              data-bs-toggle="dropdown"
+          <div className="position-absolute bottom-0 start-0 mb-4 ms-4">
+            <Link
+              className="text-decoration-none text-white"
+              to={`/perfilUsuario/${authorization.id}`}
             >
-              <i className="bi bi-person-circle"></i>
-            </button>
-            <ul className="dropdown-menu bg-dark py-2">
-              <li>
-                <Link
-                  to={`/perfilUsuario/${authorization.id}`}
-                  className="dropdown-item text-white bg-dark"
-                >
-                  Mi perfil
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/login"
-                  className="dropdown-item text-white bg-dark"
-                  onClick={logout}
-                >
-                  Logout
-                </Link>
-              </li>
-              <hr className="dropdown-divider bg-secondary" />
-
-              <li>
-                <a className="dropdown-item text-white bg-dark" href="#">
-                  Settings
-                </a>
-              </li>
-            </ul>
+              <h4>Mi perfil</h4>
+            </Link>
+            <hr className="border border-primary border-2 opacity-25 w-100" />
+            <Link className="text-decoration-none text-white" to="/login">
+              <h4>Logout</h4>
+            </Link>
           </div>
         </div>
       </div>

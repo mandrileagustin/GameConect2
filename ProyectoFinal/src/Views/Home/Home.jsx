@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import CardPublicar from "../../Componentes/CardPublicar/CardPublicar";
-
 import Footer from "../../Componentes/Footer/Footer";
 import TarjetaPost from "../../Componentes/TarjetaPost/TarjetaPost";
 
 export default function Home() {
   const [allUserPost, setAllUserPost] = useState([]);
-  const { id } = useParams();
-  const [postUsuarios, setPostUsuarios] = useState([]);
 
   useEffect(() => {
     const fechData = async () => {
