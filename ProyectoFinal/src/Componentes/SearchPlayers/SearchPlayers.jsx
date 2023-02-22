@@ -23,7 +23,6 @@ export default function SearchPlayers() {
     };
     fechData();
   }, []);
-  console.log(user);
 
   async function onSubmit(values, actions) {
     await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -52,6 +51,11 @@ export default function SearchPlayers() {
     validationSchema: BasicFormSchema,
     onSubmit,
   });
+  console.log(plataforma);
+
+  const filteredArray =
+    plataforma.length > 0 &&
+    plataforma.filter((value) => value.idUser !== authorization.id);
 
   return (
     <>
@@ -107,10 +111,10 @@ export default function SearchPlayers() {
         </form>
         {plataforma.length > 0 ? (
           <BuscandoJugador
-            plataforma={plataforma[0].plataforma}
-            juego={plataforma[0].juego}
-            nickname={plataforma[0].nickname}
-            idSala={plataforma[0].idSala}
+            plataforma={filteredArray[0].plataforma}
+            juego={filteredArray[0].juego}
+            nickname={filteredArray[0].nickname}
+            idSala={filteredArray[0].idSala}
           />
         ) : (
           <h3>No hemos encontrado a un jugador con tus filtros</h3>

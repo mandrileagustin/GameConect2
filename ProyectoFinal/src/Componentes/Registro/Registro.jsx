@@ -96,7 +96,7 @@ export default function Registro() {
   //   }, [authorization]);
   return (
     <>
-      <div className="">
+      <div>
         <form onSubmit={handleSubmit}>
           <div className=" card-registro">
             <div>
