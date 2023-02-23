@@ -1,12 +1,20 @@
 import io from "socket.io-client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Chat.css";
+import ChatBar from "./ChatBar";
+import ChatBody from "./ChatBody";
+import ChatFooter from "./ChatFooter";
 
 export default function Chat({ chat }) {
   const socket = io.connect("http://localhost:3001");
   //Mensages
-  const [message, setMessage] = useState("");
-  const [messageReceived, setMessageReceived] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [typingStatus, setTypingStatus] = useState("");
+  const lastMessageRef = useRef(null);
+
+  useEffect(() => {
+    socket.on("messageResponse", (data) => setMessages([...messages, data]));
+  }, [socket, messages]);
 
   const joinRoom = () => {
     socket.emit("join_room", chat);
@@ -22,34 +30,38 @@ export default function Chat({ chat }) {
       setMessageReceived(data);
     });
   }, [socket]);
+
+  /////////////////////////////////////////
+
+  useEffect(() => {
+    // 👇️ scroll cada vez que se manda un mensaje
+    lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  useEffect(() => {
+    socket.on("typingResponse", (data) => setTypingStatus(data));
+  }, [socket]);
+
   return (
     <>
       <div className="ubicacion-chat">
         <div className="d-flex flex-column ">
-          <h1>{`Sala: ${chat}`}</h1>
+          <h1 className="text-primary">{`Sala: ${chat}`}</h1>
 
           <button onClick={joinRoom} className="btn btn-outline-primary ">
             Join
           </button>
         </div>
-        <div className="d-flex justify-content-center">
-          <h1 className="text-white">{messageReceived}</h1>
-        </div>
-        <div className="posicion-send">
-          <div className="form-floating ">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Password"
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
+        <div className="chat">
+          <ChatBar socket={socket} />
+          <div className="chat__main">
+            <ChatBody
+              messages={messages}
+              lastMessageRef={lastMessageRef}
+              typingStatus={typingStatus}
             />
-            <label>Message</label>
+            <ChatFooter socket={socket} />
           </div>
-          <button onClick={sendMessage} className="btn btn-outline-primary">
-            Send
-          </button>
         </div>
       </div>
     </>

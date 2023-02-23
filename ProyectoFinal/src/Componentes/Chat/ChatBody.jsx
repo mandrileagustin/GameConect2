@@ -1,6 +1,25 @@
-export default function ChatBody({ messages }) {
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./Chat.css";
+
+export default function ChatBody({ messages, lastMessageRef, typingStatus }) {
+  const navigate = useNavigate();
+
+  const handleLeaveChat = () => {
+    localStorage.removeItem("userName");
+    navigate("/signUp");
+    window.location.reload();
+  };
+
   return (
     <>
+      <header className="chat__mainHeader">
+        <p>Hangout with Colleagues</p>
+        <button className="leaveChat__btn" onClick={handleLeaveChat}>
+          LEAVE CHAT
+        </button>
+      </header>
+
       {/*This shows messages sent from you*/}
       <div className="message__container">
         {messages.map((message) =>
@@ -20,6 +39,12 @@ export default function ChatBody({ messages }) {
             </div>
           )
         )}
+
+        {/*This is triggered when a user is typing*/}
+        <div className="message__status">
+          <p>{typingStatus}</p>
+        </div>
+        <div ref={lastMessageRef} />
       </div>
     </>
   );
