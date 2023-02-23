@@ -15,7 +15,6 @@ export default function ChatFooter({ socket }) {
         name: localStorage.getItem("userName"),
         id: `${socket.id}${Math.random()}`,
       });
-      Notificaciones(message, localStorage.getItem("userName"));
     }
     setMessage("");
   };

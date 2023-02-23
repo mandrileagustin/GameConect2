@@ -7,7 +7,7 @@ export default function ChatBody({ messages, lastMessageRef, typingStatus }) {
 
   const handleLeaveChat = () => {
     localStorage.removeItem("userName");
-    navigate("/signUp");
+    navigate("/home");
     window.location.reload();
   };
 

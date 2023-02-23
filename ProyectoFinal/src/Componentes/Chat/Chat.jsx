@@ -1,20 +1,14 @@
 import io from "socket.io-client";
 import { useEffect, useRef, useState } from "react";
 import "./Chat.css";
-import ChatBar from "./ChatBar";
-import ChatBody from "./ChatBody";
-import ChatFooter from "./ChatFooter";
 
 export default function Chat({ chat }) {
   const socket = io.connect("http://localhost:3001");
   //Mensages
-  const [messages, setMessages] = useState([]);
-  const [typingStatus, setTypingStatus] = useState("");
+  const [message, setMessage] = useState([]);
+  const [messageReceived, setMessageReceived] = useState("");
+  const [messageSent, setMessageSent] = useState([]);
   const lastMessageRef = useRef(null);
-
-  useEffect(() => {
-    socket.on("messageResponse", (data) => setMessages([...messages, data]));
-  }, [socket, messages]);
 
   const joinRoom = () => {
     socket.emit("join_room", chat);
@@ -34,13 +28,14 @@ export default function Chat({ chat }) {
   /////////////////////////////////////////
 
   useEffect(() => {
-    // 👇️ scroll cada vez que se manda un mensaje
-    lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    ///mostrar mensajes enviados en pantalla
+    socket.on("receive_message", (data) => setMessageSent([...message, data]));
+  }, [socket, messageSent]);
 
   useEffect(() => {
-    socket.on("typingResponse", (data) => setTypingStatus(data));
-  }, [socket]);
+    //scroll cada vez que se manda un mensaje
+    lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messageSent]);
 
   return (
     <>
@@ -52,16 +47,27 @@ export default function Chat({ chat }) {
             Join
           </button>
         </div>
-        <div className="chat">
-          <ChatBar socket={socket} />
-          <div className="chat__main">
-            <ChatBody
-              messages={messages}
-              lastMessageRef={lastMessageRef}
-              typingStatus={typingStatus}
+        <div className="d-flex justify-content-center d-grid gap-3 flex-column">
+          <h3 className="text-secondary">{message}</h3>
+          <h2 className="text-white">{messageReceived}</h2>
+          <div ref={lastMessageRef} />
+        </div>
+
+        <div className="posicion-send">
+          <div className="form-floating">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Password"
+              onChange={(e) => {
+                setMessage(e.target.value);
+              }}
             />
-            <ChatFooter socket={socket} />
+            <label>Message</label>
           </div>
+          <button onClick={sendMessage} className="btn btn-outline-primary">
+            Send
+          </button>
         </div>
       </div>
     </>
