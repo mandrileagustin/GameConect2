@@ -64,7 +64,11 @@ export default function Menu() {
               <h4>Mi perfil</h4>
             </Link>
             <hr className="border border-danger border-2 opacity-25 w-100" />
-            <Link className="text-decoration-none text-white" to="/login">
+            <Link
+              className="text-decoration-none text-white"
+              to="/login"
+              onClick={logout}
+            >
               <h4>Logout</h4>
             </Link>
           </div>

@@ -3,8 +3,12 @@ import Footer from "../../Componentes/Footer/Footer";
 export default function VistaRegistro() {
   return (
     <>
-      <Registro />
-      <Footer />
+      <div className="mb-5 mt-5">
+        <Registro />
+      </div>
+      <div className="mb-5 mt-5">
+        <Footer />
+      </div>
     </>
   );
 }

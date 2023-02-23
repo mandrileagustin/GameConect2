@@ -2,13 +2,14 @@ import "./Registro.css";
 import { useFormik } from "formik";
 import { useState, useRef } from "react";
 import { BasicFormSchema } from "./RegistroSchema";
+import { Link } from "react-router-dom";
 
 const Juegos = {
   2: "Elden Ring",
   5: "Call of Duty",
   6: "Day Z",
-  7: "Valorant",
-  8: "LOL",
+  7: "LOL",
+  8: "Valorant",
   9: "Battlefield 1",
 };
 export default function Registro() {
@@ -94,7 +95,7 @@ export default function Registro() {
           onSubmit={handleSubmit}
           className="container d-flex justify-content-between align-items-center flex-row gap-3"
         >
-          <div className="col-4 d-grid gap-2">
+          <div className="col-4 d-grid gap-3">
             <h2 className="text-white">Selecciona tus Juegos</h2>
 
             <select
@@ -125,10 +126,10 @@ export default function Registro() {
             <div className="">
               {checkValues.map((Obj, index) => (
                 <div key={index}>
-                  <h3 className="text-white ">{Juegos[Obj.juego]}</h3>
+                  <h4 className="text-white ">{Juegos[Obj.juego]}</h4>
                   <button
                     onClick={(e) => handleDelete(e, index)}
-                    className="btn btn-outline-dark"
+                    className="btn btn-outline-dark btn-sm"
                   >
                     <i class="bi bi-x-lg text-white"></i>
                   </button>
@@ -153,6 +154,15 @@ export default function Registro() {
                 <option value="Xbox">Xbox</option>
                 <option value="PC">PC</option>
               </select>
+            </div>
+            <hr className="border border-primary border-2 opacity-25 w-100" />
+            <div>
+              <h3 className="text-secondary">
+                Si te has registrado correctamente inicia seciòn en el{" "}
+                <Link to={"/login"} className="text-decoration-none">
+                  Login
+                </Link>
+              </h3>
             </div>
           </div>
 
@@ -310,7 +320,7 @@ export default function Registro() {
                 </div>
               </div>
               <hr className="border border-primary border-2 opacity-25 w-100" />
-              <div className="">
+              <div className="d-grid gap-3">
                 <button
                   className="btn btn-outline-primary"
                   disabled={isSubmitting}
