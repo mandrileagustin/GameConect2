@@ -14,7 +14,6 @@ const Juegos = {
 export default function Registro() {
   const JuegosRef = useRef();
   const [checkValues, setCheckValues] = useState([]);
-  const [toogle, setToogle] = useState(false);
 
   function handleCheck(e) {
     e.preventDefault();
@@ -25,12 +24,6 @@ export default function Registro() {
       },
     ];
     setCheckValues(values);
-    setToogle(false);
-  }
-
-  function addBtn(e) {
-    e.preventDefault();
-    setToogle(true);
   }
 
   function handleDelete(e, index) {
@@ -96,55 +89,43 @@ export default function Registro() {
   //   }, [authorization]);
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div className="d-flex flex-column d-grid gap-3 mt-5">
+      <div className="container">
+        <form
+          onSubmit={handleSubmit}
+          className="container d-flex justify-content-between align-items-center flex-row gap-3"
+        >
+          <div className="col-4 d-grid gap-2">
             <h2 className="text-white">Selecciona tus Juegos</h2>
 
-            {!toogle ? (
-              <div>
-                <button
-                  onClick={addBtn}
-                  type="button"
-                  className="btn btn-outline-primary"
-                >
-                  Añade tus juegos
-                </button>
-              </div>
-            ) : (
-              <div className="col-4 d-grid gap-3">
-                <select
-                  className="form-select opacity-75"
-                  aria-label="Default select example"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  name="idJuego"
-                  ref={JuegosRef}
-                >
-                  <option value="">Selecciona un juego</option>
-                  <option value={2}>Elden Ring</option>
-                  <option value={5}>Call of Duty</option>
-                  <option value={6}>Day Z</option>
-                  <option value={7}>LOL</option>
-                  <option value={8}>Valorant</option>
-                  <option value={9}>Battlefield 1</option>
-                </select>
-                <div>
-                  <button
-                    onClick={handleCheck}
-                    type="button"
-                    className="btn btn-outline-primary"
-                  >
-                    Añadir otro
-                  </button>
-                </div>
-              </div>
-            )}
-            <div>
-              {checkValues.map((Obj, index) => (
-                <div key={index} className="d-flex d-grid gap-4 container">
-                  <h3 className="text-white">{Juegos[Obj.juego]}</h3>
+            <select
+              className="form-select opacity-75"
+              aria-label="Default select example"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="idJuego"
+              ref={JuegosRef}
+            >
+              <option value="">Selecciona un juego</option>
+              <option value={2}>Elden Ring</option>
+              <option value={5}>Call of Duty</option>
+              <option value={6}>Day Z</option>
+              <option value={7}>LOL</option>
+              <option value={8}>Valorant</option>
+              <option value={9}>Battlefield 1</option>
+            </select>
 
+            <button
+              onClick={handleCheck}
+              type="button"
+              className="btn btn-outline-primary"
+            >
+              Añadir otro
+            </button>
+
+            <div className="">
+              {checkValues.map((Obj, index) => (
+                <div key={index}>
+                  <h3 className="text-white ">{Juegos[Obj.juego]}</h3>
                   <button
                     onClick={(e) => handleDelete(e, index)}
                     className="btn btn-outline-dark"
@@ -154,25 +135,167 @@ export default function Registro() {
                 </div>
               ))}
             </div>
+            <hr className="border border-primary border-2 opacity-25 w-100" />
+
+            <div className="d-grid gap-2 ">
+              <h2 className="text-white"> Plataforma</h2>
+
+              <select
+                className="form-select opacity-75"
+                aria-label="Default select example"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                name="plataforma"
+                id="plataforma"
+              >
+                <option value="">Selecciona tu plataforma</option>
+                <option value="PlayStation">PlayStation</option>
+                <option value="Xbox">Xbox</option>
+                <option value="PC">PC</option>
+              </select>
+            </div>
           </div>
 
-          <div className="">
-            <div className=" card-registro">
+          <div className="col-6 d-flex justify-content-end mt-5">
+            <div className="d-grid gap-2" style={{ width: "25rem" }}>
               <h3 className="text-white">Ingresa tus datos</h3>
-              <div className="d-grid gap-2">
+              <hr className="border border-primary border-2 opacity-25 w-100" />
+              <input
+                type="text"
+                className={
+                  errors.nombre && touched.nombre
+                    ? "form-control is-invalid"
+                    : "form-control opacity-75"
+                }
+                value={values.nombre}
+                name="nombre"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Nombre"
+                id="nombre"
+              />
+              <div
+                className={
+                  errors.nombre && touched.nombre
+                    ? "invalid-feeback is-invalid"
+                    : ""
+                }
+                id="input-error"
+              >
+                {" "}
+                {errors.nombre}
+              </div>
+              <input
+                type="text"
+                className={
+                  errors.apellido && touched.apellido
+                    ? "form-control is-invalid"
+                    : "form-control opacity-75"
+                }
+                value={values.apellido}
+                name="apellido"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Apellidos"
+                id="apellido"
+              />
+              <div
+                className={
+                  errors.apellido && touched.apellido
+                    ? "invalid-feeback is-invalid"
+                    : ""
+                }
+                id="input-error"
+              >
+                {errors.apellido}
+              </div>{" "}
+              <input
+                type="email"
+                className={
+                  errors.email && touched.email
+                    ? "form-control is-invalid"
+                    : "form-control opacity-75"
+                }
+                aria-describedby="emailHelp"
+                value={values.email}
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Email"
+                id="email"
+              />
+              <div
+                className={
+                  errors.email && touched.email
+                    ? "invalid-feeback is-invalid"
+                    : ""
+                }
+                id="input-error"
+              >
+                {errors.email}
+              </div>{" "}
+              <input
+                type="password"
+                className={
+                  errors.password && touched.password
+                    ? "form-control is-invalid"
+                    : "form-control opacity-75"
+                }
+                value={values.password}
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Password"
+                id="password"
+              />
+              <div
+                className={
+                  errors.password && touched.password
+                    ? "invalid-feeback is-invalid"
+                    : ""
+                }
+                id="input-error"
+              >
+                {errors.password}
+              </div>{" "}
+              <input
+                type="text"
+                className={
+                  errors.edad && touched.edad
+                    ? "form-control is-invalid"
+                    : "form-control opacity-75"
+                }
+                value={values.edad}
+                name="edad"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="Edad"
+                id="edad"
+              />
+              <div
+                className={
+                  errors.edad && touched.edad
+                    ? "invalid-feeback is-invalid"
+                    : ""
+                }
+                id="input-error"
+              >
+                {errors.edad}
+              </div>{" "}
+              <div>
                 <input
                   type="text"
                   className={
-                    errors.nombre && touched.nombre
+                    errors.nickname && touched.nickname
                       ? "form-control is-invalid"
                       : "form-control opacity-75"
                   }
-                  value={values.nombre}
-                  name="nombre"
+                  value={values.nickname}
+                  name="nickname"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Nombre"
-                  id="nombre"
+                  placeholder="Nickname"
+                  id="nickname"
                 />
                 <div
                   className={
@@ -183,164 +306,19 @@ export default function Registro() {
                   id="input-error"
                 >
                   {" "}
-                  {errors.nombre}
-                </div>
-                <input
-                  type="text"
-                  className={
-                    errors.apellido && touched.apellido
-                      ? "form-control is-invalid"
-                      : "form-control opacity-75"
-                  }
-                  value={values.apellido}
-                  name="apellido"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Apellidos"
-                  id="apellido"
-                />
-                <div
-                  className={
-                    errors.apellido && touched.apellido
-                      ? "invalid-feeback is-invalid"
-                      : ""
-                  }
-                  id="input-error"
-                >
-                  {errors.apellido}
-                </div>{" "}
-                <input
-                  type="email"
-                  className={
-                    errors.email && touched.email
-                      ? "form-control is-invalid"
-                      : "form-control opacity-75"
-                  }
-                  aria-describedby="emailHelp"
-                  value={values.email}
-                  name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Email"
-                  id="email"
-                />
-                <div
-                  className={
-                    errors.email && touched.email
-                      ? "invalid-feeback is-invalid"
-                      : ""
-                  }
-                  id="input-error"
-                >
-                  {errors.email}
-                </div>{" "}
-                <input
-                  type="password"
-                  className={
-                    errors.password && touched.password
-                      ? "form-control is-invalid"
-                      : "form-control opacity-75"
-                  }
-                  value={values.password}
-                  name="password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Password"
-                  id="password"
-                />
-                <div
-                  className={
-                    errors.password && touched.password
-                      ? "invalid-feeback is-invalid"
-                      : ""
-                  }
-                  id="input-error"
-                >
-                  {errors.password}
-                </div>{" "}
-                <input
-                  type="text"
-                  className={
-                    errors.edad && touched.edad
-                      ? "form-control is-invalid"
-                      : "form-control opacity-75"
-                  }
-                  value={values.edad}
-                  name="edad"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Edad"
-                  id="edad"
-                />
-                <div
-                  className={
-                    errors.edad && touched.edad
-                      ? "invalid-feeback is-invalid"
-                      : ""
-                  }
-                  id="input-error"
-                >
-                  {errors.edad}
-                </div>{" "}
-                <div>
-                  <input
-                    type="text"
-                    className={
-                      errors.nickname && touched.nickname
-                        ? "form-control is-invalid"
-                        : "form-control opacity-75"
-                    }
-                    value={values.nickname}
-                    name="nickname"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    placeholder="Nickname"
-                    id="nickname"
-                  />
-                  <div
-                    className={
-                      errors.nombre && touched.nombre
-                        ? "invalid-feeback is-invalid"
-                        : ""
-                    }
-                    id="input-error"
-                  >
-                    {" "}
-                    {errors.nickname}
-                  </div>
-                </div>
-                <div className="">
-                  <button
-                    className="btn btn-outline-primary"
-                    disabled={isSubmitting}
-                    type="submit"
-                  >
-                    Registrate
-                  </button>
+                  {errors.nickname}
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="d-flex align-items-start">
-            <div>
-              <h2 className="text-white"> Selecciona tu Plataforma</h2>
-            </div>
-
-            <div className="col-4">
-              <select
-                className="form-select opacity-75"
-                aria-label="Default select example"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                name="plataforma"
-                id="plataforma"
-              >
-                <option value="">Plataforma</option>
-                <option value="PlayStation">PlayStation</option>
-                <option value="Xbox">Xbox</option>
-                <option value="PC">PC</option>
-              </select>
+              <hr className="border border-primary border-2 opacity-25 w-100" />
+              <div className="">
+                <button
+                  className="btn btn-outline-primary"
+                  disabled={isSubmitting}
+                  type="submit"
+                >
+                  Registrate
+                </button>
+              </div>
             </div>
           </div>
         </form>
