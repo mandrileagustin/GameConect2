@@ -60,18 +60,18 @@ export default function MenuChat({ idSala }) {
           <h3 className="text-white">Chat</h3>
           <button
             type="button"
-            className="btn-close bg-secondary"
+            className="btn-close bg-primary opacity-25"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
         </div>
-        <div>
-          <form onSubmit={handleSubmit}>
+        <div className="d-flex justify-content-center mt-3 mb-3">
+          <form onSubmit={handleSubmit} className="d-grid gap-2">
             <input
               type="text"
               className={
                 errors.nombre && touched.nombre
-                  ? "form-control is-invalid"
+                  ? "form-control is-invalid "
                   : "form-control opacity-75"
               }
               value={values.nombre}
@@ -92,14 +92,21 @@ export default function MenuChat({ idSala }) {
               {" "}
               {errors.nombre}
             </div>
-            <button className="btn btn-primary" to="/chat" type="submit">
-              Crear Sala
-            </button>
+            <div className="d-flex justify-content-center">
+              <button className="btn btn-primary" to="/chat" type="submit">
+                Crear Sala
+              </button>
+            </div>
           </form>
         </div>
-        <Link className="btn btn-primary" to={`/chat/${idSala}`}>
-          Mi sala
-        </Link>
+        <div className="d-flex justify-content-center">
+          <hr className="border border-primary border-2 opacity-25 w-75" />
+        </div>
+        <div className="d-flex justify-content-center mt-3">
+          <Link className="text-decoration-none" to={`/chat/${idSala}`}>
+            <h2>Mi sala</h2>
+          </Link>
+        </div>
       </div>
     </div>
   );

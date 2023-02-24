@@ -2,3 +2,12 @@
     background: linear-gradient(120deg,  #6f0064 , rgb(0, 11, 75));
     border-radius: 8px;
 }
+
+.card-update{
+    margin-top: 60px;
+}
+
+.card-update-color{
+    background: linear-gradient(240deg,  #6f0064 , rgb(0, 11, 75));
+    border-radius: 8px;
+}

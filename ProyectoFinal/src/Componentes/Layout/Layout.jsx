@@ -28,7 +28,7 @@ export default function Layout() {
     <>
       <Outlet />
       <Menu />
-      <MenuChat idSala={sala.idSala} />
+      <MenuChat idSala={sala.idSala} nombre={sala.nombre} />
     </>
   );
 }

@@ -90,7 +90,7 @@ export default function Registro() {
   //   }, [authorization]);
   return (
     <>
-      <div className="container">
+      <div className="container contenedor-tamaño">
         <form
           onSubmit={handleSubmit}
           className="container d-flex justify-content-between align-items-center flex-row gap-3"

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Chat.css";
 
-const ChatBar = ({ socket }) => {
+const ChatBar = ({ chat }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     socket.on("newUserResponse", (data) => setUsers(data));
-  }, [socket, users]);
+  }, [chat, users]);
 
   return (
     <div className="chat__sidebar">

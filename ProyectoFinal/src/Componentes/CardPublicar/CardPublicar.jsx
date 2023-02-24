@@ -6,12 +6,13 @@ import "./CardPublicar.css";
 export default function Comentario() {
   const { authorization } = useAuthContext();
   async function onSubmit(values, actions) {
+    let formData = new FormData();
+    formData.append("imagen", values.path);
+    formData.append("comentario", values.comentario);
     fetch(`http://localhost:3000/post/addPost/${authorization.id}`, {
       method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(values),
+
+      body: formData,
     }).then((response) => {
       console.log(values);
       if (response.status === 400) {
@@ -32,12 +33,14 @@ export default function Comentario() {
     touched,
     errors,
     handleBlur,
+    setFieldValue,
     handleChange,
     handleSubmit,
     isSubmitting,
   } = useFormik({
     initialValues: {
       comentario: "",
+      path: "",
     },
     validationSchema: BasicFormSchema,
     onSubmit,
@@ -49,6 +52,15 @@ export default function Comentario() {
           <div className="card card-comentar" style={{ width: "40rem" }}>
             <div className="card-header text-white">Publicar</div>
             <div className="card-body  d-grid gap-4">
+              <input
+                className=""
+                onChange={(e) => setFieldValue("path", e.target.files[0])}
+                onBlur={handleBlur}
+                name="path"
+                id="path"
+                value={undefined}
+                type="file"
+              />
               <textarea
                 type="text"
                 className={
@@ -63,6 +75,7 @@ export default function Comentario() {
                 placeholder="Comentario"
                 id="comentario"
               />
+              <hr className="border border-primary border-2 opacity-25 w-100" />
               <button
                 disabled={isSubmitting}
                 className="btn btn-outline-primary"

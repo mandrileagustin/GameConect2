@@ -115,8 +115,8 @@ userQueris.updateUser = async (id, userData) => {
       plataforma: userData.plataforma,
       juegos: userData.juegos,
       role: userData.role,
-      genero: userData.genero,
       edad: userData.edad,
+      nickname: userData.nickname,
     };
     console.log(userObj);
     userObj = await utils.removeUndefinedKeys(userObj);

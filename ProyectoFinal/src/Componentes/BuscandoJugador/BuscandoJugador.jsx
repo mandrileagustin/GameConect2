@@ -1,26 +1,29 @@
 import { Link } from "react-router-dom";
-
+import "./BuscarJugadores.css";
 export default function BuscandoJugador({
   plataforma,
-  juego,
+
   nickname,
   idSala,
+  avatar,
 }) {
   return (
     <>
-      <div className="d-flex justify-content-center mt-5 d-grid gap-4">
-        <h2>Buscando...</h2>
+      <div className="card card-buscar-jugadores" style={{ width: "18rem" }}>
+        <img
+          src={`http://localhost:3000/${avatar}`}
+          style={{ height: "14rem" }}
+          className="card-img-top"
+          alt="..."
+        />
+        <div className="card-body">
+          <h4 className="card-text text-primary">{nickname}</h4>
 
-        <div className="card text-center " style={{ width: "18rem" }}>
-          <img src="..." className="card-img-top" alt="..." />
-          <div className="card-body d-grid gap-3">
-            <h5 className="card-title">Usuario con el que conectamos</h5>
-            <p className="card-text">{nickname}</p>
+          <p className="card-text text-white">{plataforma}</p>
 
-            <p className="card-text">{plataforma}</p>
-            <p className="card-text">{juego}</p>
-            <Link className="btn btn-danger" to={`/chat/${idSala}`}>
-              Seguir buscando
+          <div className="d-grid gap-2">
+            <Link className="btn btn-outline-primary" to={`/chat/${idSala}`}>
+              Conectar sala
             </Link>
             <button className="btn btn-danger">Seguir buscando</button>
           </div>

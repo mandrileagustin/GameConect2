@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TarjetaPostUsuario from "../../Componentes/TrajetaPostUsuario/TarjetaPostUsuario";
 import CardJuegos from "../../Componentes/CardJuegos/CardJuegos";
+
 export default function PerfilUsuario() {
   const { id } = useParams();
   const [postUsuarios, setPostUsuarios] = useState([]);

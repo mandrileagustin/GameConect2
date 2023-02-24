@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../../Context/AuthContext";
 import BuscandoJugador from "../BuscandoJugador/BuscandoJugador";
 import { BasicFormSchema } from "./SeacrhPlayerSchema";
-
+import "./SearchPlayers.css";
 export default function SearchPlayers() {
   const [plataforma, setPlataforma] = useState([]);
   const [user, setUser] = useState([]);
@@ -63,12 +63,22 @@ export default function SearchPlayers() {
 
   return (
     <>
-      <div className=" d-flex justify-content-center mt-5 d-grid gap-4 align-content-center">
-        <form onSubmit={handleSubmit}>
-          <div className="card text-center w-50">
-            <div className="card-header">Buscar jugadores</div>
-            <div className="card-body d-grid gap-2">
-              <h5 className="card-title">Que estas buscando...</h5>
+      <div className="container mt-5 contenedor-tamaño">
+        <hr className="border border-primary border-1 opacity-50 w-75" />
+        <div className="d-flex justify-content-center mb-4">
+          <h1 className="text-white">Encuentra tu compañero ideal</h1>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="container d-flex justify-content-center mb-5"
+        >
+          <div
+            className="card text-center card-buscar"
+            style={{ width: "30rem" }}
+          >
+            <div className="card-body text-center d-grid gap-3">
+              <h5 className="text-white">Que estas buscando...</h5>
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -99,9 +109,9 @@ export default function SearchPlayers() {
                 <option value="Valorant">Valorant</option>
                 <option value="Battlefield 1">Batllefield 1</option>
               </select>
-
+              <hr className="border border-primary border-1 opacity-50 w-100" />
               <button
-                className="btn btn-primary"
+                className="btn btn-outline-primary"
                 type="submit"
                 disabled={isSubmitting}
               >
@@ -109,25 +119,34 @@ export default function SearchPlayers() {
               </button>
             </div>
           </div>
-          <div className="col-3">
-            <h1>Encuentra tu compañero ideal</h1>
-          </div>
         </form>
-        {plataforma.length > 0 ? (
-          <div>
-            {plataforma.map((jugador) => (
-              <BuscandoJugador
-                key={jugador.id}
-                plataforma={jugador.plataforma}
-                juego={jugador.juego}
-                nickname={jugador.nickname}
-                idSala={jugador.idSala}
-              />
-            ))}
+        <div className="d-flex justify-content-end">
+          <hr className="border border-primary border-1 opacity-50 w-75" />
+        </div>
+        <div className="container d-flex justify-content-start mt-4">
+          <div className="">
+            {plataforma.length > 0 ? (
+              <div className="d-grid gap-3 d-flex">
+                {plataforma.map((jugador) => (
+                  <BuscandoJugador
+                    key={jugador.id}
+                    plataforma={jugador.plataforma}
+                    nickname={jugador.nickname}
+                    idSala={jugador.idSala}
+                    avatar={jugador.avatar}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div>
+                <h3 className="text-white col-6">
+                  No hemos encontrado a un jugador con tus filtros, por favor
+                  realiza una busqueda...
+                </h3>
+              </div>
+            )}
           </div>
-        ) : (
-          <h3>No hemos encontrado a un jugador con tus filtros</h3>
-        )}
+        </div>
       </div>
     </>
   );

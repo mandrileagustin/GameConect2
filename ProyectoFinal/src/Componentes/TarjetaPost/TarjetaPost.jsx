@@ -11,11 +11,10 @@ export default function TarjetaPost({ comentario, path, nickname, id }) {
               className="card-img-top"
               alt="..."
             />
-            <div className="card-body">
+            <div className="card-body text-end">
               <h3 className="text-white fst-italic">{nickname}</h3>
               <h5 className="text-secondary">{comentario}</h5>
               <hr className="border border-primary border-2 opacity-25 w-100" />
-              <button className="btn btn-outline-primary">Me gusta</button>
             </div>
           </div>
         </div>
