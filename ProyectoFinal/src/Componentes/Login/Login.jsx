@@ -36,8 +36,9 @@ export default function Login() {
   return (
     <section className="posicion-login d-flex justify-content-center align-items-center">
       <form onSubmit={handleSubmit}>
-        <div className="card-login d-grid gap-4">
+        <div className=" d-grid gap-3">
           <h2 className="text-white">Login</h2>
+          <hr className="border border-primary border-2 opacity-25 w-100" />
           <input
             className={
               errors.email && touched.email
@@ -83,6 +84,7 @@ export default function Login() {
             {errors.password}
           </div>{" "}
           <div>
+            <hr className="border border-primary border-2 opacity-25 w-100" />
             <button
               disabled={isSubmitting}
               type="submit"

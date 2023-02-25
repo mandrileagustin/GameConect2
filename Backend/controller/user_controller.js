@@ -80,6 +80,7 @@ controller.loginUser = async (req, res) => {
       id: user.id,
       email,
       role: user.role,
+      nickname: user.nickname,
     });
 
     // Codificamos el la clave secreta definida en la variable de entorno por requisito de la librería jose
@@ -137,7 +138,7 @@ controller.updateUser = async (req, res) => {
       return res.status(400).send("Error en el body");
 
     await dao.updateUser(req.params.id, req.body);
-
+    await dao.getUserById(req.params.id);
     return res.send(`Usuario con id ${req.params.id} modificado`);
   } catch (e) {
     console.log(e.message);

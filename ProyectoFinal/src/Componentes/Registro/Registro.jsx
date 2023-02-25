@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { useState, useRef } from "react";
 import { BasicFormSchema } from "./RegistroSchema";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const Juegos = {
   2: "Elden Ring",
   5: "Call of Duty",
@@ -50,7 +50,12 @@ export default function Registro() {
       if (response.status === 400) {
         alert("error al recibir el body");
       } else if (response.status === 200) {
-        alert(`Usuario registrado correctamente`);
+        Swal.fire({
+          position: "center",
+          title:
+            "Te has registrado con exito, dirigite al Login para comensar a jugar",
+          confirmButtonColor: "#00074a",
+        });
       } else if (response.status === 409) {
         alert("usuario ya registrado");
       }
@@ -75,7 +80,6 @@ export default function Registro() {
       email: "",
       password: "",
       edad: "",
-
       plataforma: "",
       nickname: "",
       idJuego: "",
@@ -120,16 +124,16 @@ export default function Registro() {
               type="button"
               className="btn btn-outline-primary"
             >
-              Añadir otro
+              Añadir
             </button>
 
-            <div className="">
+            <div className=" d-grid gap-2">
               {checkValues.map((Obj, index) => (
-                <div key={index}>
+                <div key={index} className="d-flex justify-content-between">
                   <h4 className="text-white ">{Juegos[Obj.juego]}</h4>
                   <button
                     onClick={(e) => handleDelete(e, index)}
-                    className="btn btn-outline-dark btn-sm"
+                    className="btn btn-outline-danger btn-sm"
                   >
                     <i class="bi bi-x-lg text-white"></i>
                   </button>
@@ -158,10 +162,10 @@ export default function Registro() {
             <hr className="border border-primary border-2 opacity-25 w-100" />
             <div>
               <h3 className="text-secondary">
-                Si te has registrado correctamente inicia seciòn en el{" "}
                 <Link to={"/login"} className="text-decoration-none">
                   Login
                 </Link>
+                <hr className="border border-primary border-2 opacity-25 w-25" />
               </h3>
             </div>
           </div>
@@ -322,7 +326,7 @@ export default function Registro() {
               <hr className="border border-primary border-2 opacity-25 w-100" />
               <div className="d-grid gap-3">
                 <button
-                  className="btn btn-outline-primary"
+                  className="btn btn-primary"
                   disabled={isSubmitting}
                   type="submit"
                 >

@@ -1,27 +1,21 @@
 import React, { useState } from "react";
+import { useAuthContext } from "../../Context/AuthContext";
+
 import "./Chat.css";
 
-export default function ChatFooter({ socket }) {
+export default function ChatFooter({ socket, sendMessage }) {
   const [message, setMessage] = useState("");
+  const { authorization } = useAuthContext();
 
   const handleTyping = () =>
-    socket.emit("typing", `${localStorage.getItem("userName")} is typing`);
-
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    if (message.trim() && localStorage.getItem("userName")) {
-      socket.emit("message", {
-        text: message,
-        name: localStorage.getItem("userName"),
-        id: `${socket.id}${Math.random()}`,
-      });
-    }
-    setMessage("");
-  };
+    socket.emit(
+      "typing",
+      `${localStorage.getItem(authorization.nickname)} is typing`
+    );
 
   return (
     <div className="chat__footer">
-      <form className="form" onSubmit={handleSendMessage}>
+      <form className="form" onSubmit={(e) => sendMessage(e, message)}>
         <input
           type="text"
           placeholder="Write message"

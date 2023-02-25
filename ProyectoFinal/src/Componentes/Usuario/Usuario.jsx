@@ -3,6 +3,7 @@ import { useAuthContext } from "../../Context/AuthContext";
 import { UsuarioSchema } from "./UsuarioSchema";
 import "./Usuario.css";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Perfil({ usuario }) {
   const { authorization } = useAuthContext();
@@ -20,7 +21,11 @@ export default function Perfil({ usuario }) {
       if (response.status === 400) {
         alert("error al recibir el body");
       } else if (response.status === 200) {
-        alert(`Detalles del usuario modificado correctamente`);
+        Swal.fire({
+          position: "center",
+          title: "Tu perfil se a modificado correctamente",
+          confirmButtonColor: "#00074a",
+        });
       } else if (response.status === 409) {
         alert("usuario ya registrado");
       }
@@ -120,7 +125,7 @@ export default function Perfil({ usuario }) {
                     {errors.plataforma}
                   </div>
                   <button
-                    className="btn btn-outline-primary"
+                    className="btn btn-primary"
                     disabled={isSubmitting}
                     type="submit"
                   >

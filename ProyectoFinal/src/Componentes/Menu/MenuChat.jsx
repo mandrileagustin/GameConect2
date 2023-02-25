@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import { BasicFormSchema } from "./BuscandoJugadorSchema";
 import { useAuthContext } from "../../Context/AuthContext";
 import { Link } from "react-router-dom";
+import "./Menu.css";
 
 export default function MenuChat({ idSala }) {
   const { authorization } = useAuthContext();
@@ -42,7 +43,7 @@ export default function MenuChat({ idSala }) {
   return (
     <div className="mt-5 position-absolute top-0 end-0 me-1">
       <button
-        className="btn btn-outline-primary py-3"
+        className="btn btn-primary py-3"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
@@ -51,7 +52,7 @@ export default function MenuChat({ idSala }) {
         <i className="bi bi-chat-left-fill"></i>{" "}
       </button>
       <div
-        className="offcanvas offcanvas-end bg-dark"
+        className="offcanvas offcanvas-end barra-chat"
         tabIndex="-1"
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"

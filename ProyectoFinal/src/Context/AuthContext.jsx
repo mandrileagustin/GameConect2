@@ -8,6 +8,7 @@ const AuthContext = createContext({
     email: "null",
     role: "null",
     id: "null",
+    nickname: "null",
   },
   login: () => {},
   logout: () => {},
@@ -22,6 +23,7 @@ export function AuthContextProvider({ children }) {
       email: "null",
       role: "null",
       id: "null",
+      nickname: "null",
     }
   );
   const [errorMessage, setErrorMessage] = useState(null);
@@ -51,6 +53,7 @@ export function AuthContextProvider({ children }) {
       email: null,
       role: null,
       id: null,
+      nickname: null,
     });
   }
 

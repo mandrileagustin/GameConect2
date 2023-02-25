@@ -1,5 +1,6 @@
 import { useAuthContext } from "../../Context/AuthContext";
 import { Link } from "react-router-dom";
+import "./Menu.css";
 
 export default function Menu() {
   const { authorization } = useAuthContext();
@@ -7,18 +8,18 @@ export default function Menu() {
 
   return (
     <div className="mt-5 position-absolute top-0 start-0 ms-1">
-      <a
-        className="btn btn-outline-primary py-3 "
+      <button
+        className="btn btn-primary py-3 "
         data-bs-toggle="offcanvas"
         href="#offcanvasExample"
         role="button"
         aria-controls="offcanvasExample"
       >
         <i className="bi bi-list"></i>
-      </a>
+      </button>
 
       <div
-        className="offcanvas offcanvas-start bg-dark"
+        className="offcanvas offcanvas-start barra-navegacion "
         tabIndex="-1"
         id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel"
@@ -37,7 +38,7 @@ export default function Menu() {
             aria-label="Close"
           ></button>
         </div>
-        <div className="offcanvas-body">
+        <div className="offcanvas-body ">
           <div className="text-white d-grid gap-2">
             <hr className="border border-primary border-1 opacity-25 w-100" />
             <Link className="text-decoration-none text-white" to="/Home">

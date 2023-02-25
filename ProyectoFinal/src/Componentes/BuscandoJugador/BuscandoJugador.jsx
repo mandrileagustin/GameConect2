@@ -25,7 +25,6 @@ export default function BuscandoJugador({
             <Link className="btn btn-outline-primary" to={`/chat/${idSala}`}>
               Conectar sala
             </Link>
-            <button className="btn btn-danger">Seguir buscando</button>
           </div>
         </div>
       </div>

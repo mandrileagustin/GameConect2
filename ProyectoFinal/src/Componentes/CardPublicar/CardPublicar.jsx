@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { BasicFormSchema } from "./PublicarSchema";
 import { useAuthContext } from "../../Context/AuthContext";
 import "./CardPublicar.css";
-
+import Swal from "sweetalert2";
 export default function Comentario() {
   const { authorization } = useAuthContext();
   async function onSubmit(values, actions) {
@@ -18,7 +18,11 @@ export default function Comentario() {
       if (response.status === 400) {
         alert("error al recibir el body");
       } else if (response.status === 200) {
-        alert(`usuario ${values.comentario} registrado correctamente`);
+        Swal.fire({
+          position: "center",
+          title: "Publicacion realizada exito",
+          confirmButtonColor: "#00074a",
+        });
       } else if (response.status === 409) {
         alert("usuario ya registrado");
       }
@@ -78,7 +82,7 @@ export default function Comentario() {
               <hr className="border border-primary border-2 opacity-25 w-100" />
               <button
                 disabled={isSubmitting}
-                className="btn btn-outline-primary"
+                className="btn btn-primary "
                 type="submit"
               >
                 {" "}

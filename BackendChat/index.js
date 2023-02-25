@@ -23,7 +23,7 @@ io.on("connection", (socket) => {
 
   socket.on("send_message", (data) => {
     console.log(data, "mensaje");
-    io.to(data.room).emit("receive_message", data.message);
+    io.to(data.room).emit("receive_message", data);
   });
 
   socket.on("typing", (data) => socket.broadcast.emit("typingResponse", data));

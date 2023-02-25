@@ -1,73 +1,69 @@
 import io from "socket.io-client";
 import { useEffect, useRef, useState } from "react";
 import "./Chat.css";
+import ChatBar from "./ChatBar";
+import ChatBody from "./ChatBody";
+import ChatFooter from "./ChatFooter";
+
+import { useAuthContext } from "../../Context/AuthContext";
 
 export default function Chat({ chat }) {
   const socket = io.connect("http://localhost:3001");
   //Mensages
-  const [message, setMessage] = useState([]);
-  const [messageReceived, setMessageReceived] = useState("");
-  const [messageSent, setMessageSent] = useState([]);
+  const [message, setMessage] = useState("");
+  const [messageReceived, setMessageReceived] = useState([]);
+  const [typingStatus, setTypingStatus] = useState("");
   const lastMessageRef = useRef(null);
+  const { authorization } = useAuthContext();
 
   const joinRoom = () => {
     socket.emit("join_room", chat);
   };
 
-  const sendMessage = () => {
-    socket.emit("send_message", { message, room: chat });
+  const sendMessage = (e, message) => {
+    e.preventDefault();
+    const id = `${socket.id}${Math.random()}`;
+    socket.emit("send_message", {
+      name: authorization.nickname,
+      id,
+      message,
+      room: chat,
+    });
+    setMessage("");
+    console.log(messageReceived, "este es el de chat.jsx");
   };
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      console.log(data);
-      setMessageReceived(data);
+      setMessageReceived((previousMessages) => [...previousMessages, data]);
     });
   }, [socket]);
 
   /////////////////////////////////////////
-
   useEffect(() => {
-    ///mostrar mensajes enviados en pantalla
-    socket.on("receive_message", (data) => setMessageSent([...message, data]));
-  }, [socket, messageSent]);
+    socket.on("typingResponse", (data) => setTypingStatus(data));
+  }, [socket]);
 
   useEffect(() => {
     //scroll cada vez que se manda un mensaje
     lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messageSent]);
+  }, [messageReceived]);
 
   return (
     <>
-      <div className="ubicacion-chat">
-        <div className="d-flex flex-column ">
-          <h1 className="text-primary">{`Sala: ${chat}`}</h1>
-
-          <button onClick={joinRoom} className="btn btn-outline-primary ">
-            Join
-          </button>
-        </div>
-        <div className="d-flex justify-content-center d-grid gap-3 flex-column">
-          <h3 className="text-secondary">{message}</h3>
-          <h2 className="text-white">{messageReceived}</h2>
-          <div ref={lastMessageRef} />
-        </div>
-
-        <div className="posicion-send">
-          <div className="form-floating">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Password"
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
+      <div className="container ubicacion-chat">
+        <div className="chat">
+          <ChatBar socket={socket} chat={chat} />
+          <div className="chat__main">
+            <ChatBody
+              messages={messageReceived}
+              lastMessageRef={lastMessageRef}
+              typingStatus={typingStatus}
+              joinRoom={joinRoom}
             />
-            <label>Message</label>
+
+            <ChatFooter socket={socket} sendMessage={sendMessage} />
           </div>
-          <button onClick={sendMessage} className="btn btn-outline-primary">
-            Send
-          </button>
         </div>
       </div>
     </>

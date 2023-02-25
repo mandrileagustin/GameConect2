@@ -53,14 +53,6 @@ export default function SearchPlayers() {
   });
   console.log(plataforma);
 
-  // const filteredArray =
-  //   plataforma.length > 0 &&
-  //   plataforma.filter((value) => value.idUser !== authorization.id);
-
-  // const randomValues =
-  //   filteredArray.length > 0 &&
-  //   filteredArray[Math.floor(Math.random() * filteredArray.length)];
-
   return (
     <>
       <div className="container mt-5 contenedor-tamaño">
@@ -111,7 +103,7 @@ export default function SearchPlayers() {
               </select>
               <hr className="border border-primary border-1 opacity-50 w-100" />
               <button
-                className="btn btn-outline-primary"
+                className="btn btn-primary"
                 type="submit"
                 disabled={isSubmitting}
               >
@@ -139,7 +131,7 @@ export default function SearchPlayers() {
               </div>
             ) : (
               <div>
-                <h3 className="text-white col-6">
+                <h3 className="text-secondary col-6">
                   No hemos encontrado a un jugador con tus filtros, por favor
                   realiza una busqueda...
                 </h3>
