@@ -122,7 +122,7 @@ export default function Registro() {
             <button
               onClick={handleCheck}
               type="button"
-              className="btn btn-outline-primary"
+              className="btn btn-primary"
             >
               Añadir
             </button>
@@ -133,9 +133,9 @@ export default function Registro() {
                   <h4 className="text-white ">{Juegos[Obj.juego]}</h4>
                   <button
                     onClick={(e) => handleDelete(e, index)}
-                    className="btn btn-outline-danger btn-sm"
+                    className="btn"
                   >
-                    <i class="bi bi-x-lg text-white"></i>
+                    <i class="bi bi-x-lg text-danger"></i>
                   </button>
                 </div>
               ))}
@@ -170,7 +170,7 @@ export default function Registro() {
             </div>
           </div>
 
-          <div className="col-6 d-flex justify-content-end mt-5">
+          <div className="col-6 d-flex justify-content-end mt-2">
             <div className="d-grid gap-2" style={{ width: "25rem" }}>
               <h3 className="text-white">Ingresa tus datos</h3>
               <hr className="border border-primary border-2 opacity-25 w-100" />

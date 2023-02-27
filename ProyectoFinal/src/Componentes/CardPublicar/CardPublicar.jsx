@@ -82,7 +82,7 @@ export default function Comentario() {
               <hr className="border border-primary border-2 opacity-25 w-100" />
               <button
                 disabled={isSubmitting}
-                className="btn btn-primary "
+                className="btn btn-primary"
                 type="submit"
               >
                 {" "}

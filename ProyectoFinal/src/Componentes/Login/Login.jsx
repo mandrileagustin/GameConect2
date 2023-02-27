@@ -8,15 +8,16 @@ import { useEffect } from "react";
 export default function Login() {
   const { login, authorization } = useAuthContext();
   const navigate = useNavigate();
+
   // useEffect(() => {
   //   if (authorization) {
-  //     navigate("/home");
+  //     navigate("home");
   //   }
   // }, [authorization]);
 
   async function onSubmit(values, actions) {
     login(values);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     actions.resetForm();
   }
   const {
@@ -89,7 +90,7 @@ export default function Login() {
               disabled={isSubmitting}
               type="submit"
               value="Login"
-              className="btn btn-outline-primary col-6"
+              className="btn btn-primary col-6"
             >
               Login
             </button>
@@ -107,7 +108,7 @@ export default function Login() {
           Registrate para continuar
         </h2>
         <div className="d-flex justify-content-end col-12">
-          <Link className="btn btn-outline-primary col-4" to={"/registro"}>
+          <Link className="btn btn-primary col-4" to={"/registro"}>
             Ir a registro
           </Link>
         </div>

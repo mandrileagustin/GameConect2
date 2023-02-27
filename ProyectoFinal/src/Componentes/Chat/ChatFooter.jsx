@@ -18,14 +18,17 @@ export default function ChatFooter({ socket, sendMessage }) {
       <form className="form" onSubmit={(e) => sendMessage(e, message)}>
         <input
           type="text"
-          placeholder="Write message"
+          placeholder="Escribe tu mensaje"
           className="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           //Esto manda un evento cuando se escribe un mensaje a Socket.io
           onKeyDown={handleTyping}
         />
-        <button className="sendBtn">SEND</button>
+
+        <button className="sendBtn btn btn-primary me-5 py-2">
+          <i class="bi bi-send-fill"></i>
+        </button>
       </form>
     </div>
   );

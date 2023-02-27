@@ -66,6 +66,7 @@ dao.getPostByIdUsuario = async (idUsuario) =>
   await postQueris.getPostByIdUsuario(idUsuario);
 //Chat
 dao.getChatById = async (idUsuario) => await chatQueris.getChatById(idUsuario);
+dao.getChat = async (id) => await chatQueris.getChat(id);
 
 dao.addRoom = async (userData) => await chatQueris.addRoom(userData);
 export default dao;

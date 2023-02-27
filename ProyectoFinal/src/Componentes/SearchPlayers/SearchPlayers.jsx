@@ -8,6 +8,7 @@ export default function SearchPlayers() {
   const [plataforma, setPlataforma] = useState([]);
   const [user, setUser] = useState([]);
   const { authorization } = useAuthContext();
+  const [visible, setVisible] = useState("d-none");
 
   useEffect(() => {
     const fechData = async () => {
@@ -24,8 +25,15 @@ export default function SearchPlayers() {
     fechData();
   }, []);
 
+  function Spinner() {
+    setVisible("");
+    setTimeout(() => {
+      setVisible("d-none");
+    }, 3000);
+  }
+
   async function onSubmit(values, actions) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const response = await fetch(`http://localhost:3000/juegos/match`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -35,6 +43,7 @@ export default function SearchPlayers() {
     setPlataforma(data);
     actions.resetForm();
   }
+
   const {
     values,
     touched,
@@ -84,7 +93,6 @@ export default function SearchPlayers() {
                 <option value="PC">PC</option>
                 <option value="Xbox">Xbox</option>
               </select>
-
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -102,10 +110,20 @@ export default function SearchPlayers() {
                 <option value="Battlefield 1">Batllefield 1</option>
               </select>
               <hr className="border border-primary border-1 opacity-50 w-100" />
+              <div className={`text-center ${visible}`}>
+                <div className="spinner-border text-primary" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </div>
+
               <button
                 className="btn btn-primary"
                 type="submit"
                 disabled={isSubmitting}
+                onClick={() => {
+                  Spinner();
+                  handleSubmit();
+                }}
               >
                 Buscar jugador
               </button>

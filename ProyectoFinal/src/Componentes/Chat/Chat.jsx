@@ -30,7 +30,6 @@ export default function Chat({ chat }) {
       room: chat,
     });
     setMessage("");
-    console.log(messageReceived, "este es el de chat.jsx");
   };
 
   useEffect(() => {
@@ -51,7 +50,7 @@ export default function Chat({ chat }) {
 
   return (
     <>
-      <div className="container ubicacion-chat">
+      <div className="container">
         <div className="chat">
           <ChatBar socket={socket} chat={chat} />
           <div className="chat__main">

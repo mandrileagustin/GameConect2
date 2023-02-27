@@ -9,13 +9,13 @@ export default function Menu() {
   return (
     <div className="mt-5 position-absolute top-0 start-0 ms-1">
       <button
-        className="btn btn-primary py-3 "
+        className="btn btn-dark py-3 "
         data-bs-toggle="offcanvas"
         href="#offcanvasExample"
         role="button"
         aria-controls="offcanvasExample"
       >
-        <i className="bi bi-list"></i>
+        <i className="bi bi-list text-primary"></i>
       </button>
 
       <div
@@ -26,7 +26,7 @@ export default function Menu() {
       >
         <div className="offcanvas-header">
           <h2
-            className="offcanvas-title text-white fst-italic"
+            className="offcanvas-title text-primary fst-italic"
             id="offcanvasExampleLabel"
           >
             GameConnect

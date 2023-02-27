@@ -124,6 +124,29 @@ export default function Perfil({ usuario }) {
                   >
                     {errors.plataforma}
                   </div>
+                  <input
+                    type="password"
+                    className={
+                      errors.password && touched.password
+                        ? "form-control is-invalid"
+                        : "form-control opacity-75"
+                    }
+                    value={values.password}
+                    name="password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="Password de verificacion"
+                  />
+                  <div
+                    className={
+                      errors.password && touched.password
+                        ? "invalid-feeback is-invalid"
+                        : ""
+                    }
+                    id="input-error"
+                  >
+                    {errors.password}
+                  </div>{" "}
                   <button
                     className="btn btn-primary"
                     disabled={isSubmitting}

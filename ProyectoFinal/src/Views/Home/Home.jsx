@@ -22,8 +22,8 @@ export default function Home() {
   return (
     <>
       <CardPublicar />
-      {allUserPost.map((postUsers) => (
-        <div className="d-flex flex-column align-items-center">
+      {allUserPost.map((postUsers, index) => (
+        <div className="d-flex flex-column align-items-center" key={index}>
           <hr className="border border-white border-2 opacity-25 w-50" />
           <TarjetaPost
             key={postUsers.id}

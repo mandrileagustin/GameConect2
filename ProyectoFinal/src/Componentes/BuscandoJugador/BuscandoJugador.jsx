@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./BuscarJugadores.css";
 export default function BuscandoJugador({
   plataforma,
-
   nickname,
   idSala,
   avatar,

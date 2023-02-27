@@ -21,9 +21,11 @@ export default function ChatBody({
   return (
     <>
       <header className="chat__mainHeader">
-        <button className="btn btn-outline-primary" onClick={handleLeaveChat}>
+        <button className="btn btn-danger" onClick={handleLeaveChat}>
           LEAVE CHAT
         </button>
+        <hr className="border border-primary border-2 opacity-25 h-100" />
+
         <button onClick={joinRoom} className="btn btn-primary ">
           Unirse al chat
         </button>
@@ -32,11 +34,10 @@ export default function ChatBody({
       {/*This shows messages sent from you*/}
       <div className="message__container">
         {messages.map((message) => {
-          console.log(message, "este es el mensaje");
           if (message.name === authorization.nickname) {
             return (
               <div className="message__chats" key={message.id}>
-                <p className="sender__name">You</p>
+                <p className="sender__name text-primary">You</p>
                 <div className="message__sender">
                   <p>{message.message}</p>
                 </div>
@@ -45,17 +46,17 @@ export default function ChatBody({
           } else {
             return (
               <div className="message__chats" key={message.id}>
-                <p>{message.name}</p>
+                <p className="text-secondary">{message.name}</p>
                 <div className="message__recipient">
-                  <p>{message.message}</p>
+                  <p className="text-white">{message.message}</p>
                 </div>
               </div>
             );
           }
         })}
 
-        <div className="message__status">
-          <p>{typingStatus}</p>
+        <div className="message__status text-secondary">
+          <p>{typingStatus}...</p>
         </div>
         <div ref={lastMessageRef} />
       </div>

@@ -4,7 +4,7 @@ import { useAuthContext } from "../../Context/AuthContext";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 
-export default function MenuChat({ idSala }) {
+export default function MenuChat({ idSala, nombre }) {
   const { authorization } = useAuthContext();
 
   async function onSubmit(values, action) {
@@ -43,13 +43,13 @@ export default function MenuChat({ idSala }) {
   return (
     <div className="mt-5 position-absolute top-0 end-0 me-1">
       <button
-        className="btn btn-primary py-3"
+        className="btn btn-dark py-3 "
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
         aria-controls="offcanvasRight"
       >
-        <i className="bi bi-chat-left-fill"></i>{" "}
+        <i className="bi bi-chat-left-fill text-primary"></i>{" "}
       </button>
       <div
         className="offcanvas offcanvas-end barra-chat"
@@ -58,7 +58,7 @@ export default function MenuChat({ idSala }) {
         aria-labelledby="offcanvasRightLabel"
       >
         <div className="offcanvas-header">
-          <h3 className="text-white">Chat</h3>
+          <h3 className="text-primary">Chat</h3>
           <button
             type="button"
             className="btn-close bg-primary opacity-25"
@@ -105,7 +105,7 @@ export default function MenuChat({ idSala }) {
         </div>
         <div className="d-flex justify-content-center mt-3">
           <Link className="text-decoration-none" to={`/chat/${idSala}`}>
-            <h2>Mi sala</h2>
+            <h4>{nombre}</h4>
           </Link>
         </div>
       </div>
