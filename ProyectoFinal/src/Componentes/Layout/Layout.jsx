@@ -27,8 +27,10 @@ export default function Layout() {
   return (
     <>
       <Outlet />
-      <Menu />
-      <MenuChat idSala={sala.idSala} nombre={sala.nombre} />
+      <div className="fixed-top mt-5 d-flex ">
+        <Menu />
+        <MenuChat idSala={sala.idSala} nombre={sala.nombre} />
+      </div>
     </>
   );
 }

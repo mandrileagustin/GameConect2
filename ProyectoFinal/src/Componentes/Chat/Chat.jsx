@@ -61,7 +61,12 @@ export default function Chat({ chat }) {
               joinRoom={joinRoom}
             />
 
-            <ChatFooter socket={socket} sendMessage={sendMessage} />
+            <ChatFooter
+              socket={socket}
+              sendMessage={sendMessage}
+              setMessage={setMessage}
+              message={message}
+            />
           </div>
         </div>
       </div>

@@ -38,7 +38,7 @@ export default function PerfilUsuario() {
   return (
     <>
       <div className="container">
-        <div className="mb-5">
+        <div className="mb-3">
           <Usuario usuario={usuario} />
         </div>
         <hr className="border border-primary border-2 opacity-25 w-100" />

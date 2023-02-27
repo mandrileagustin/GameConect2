@@ -52,10 +52,14 @@ export default function Comentario() {
   return (
     <>
       <div className="d-flex justify-content-center mt-5">
-        <form onSubmit={handleSubmit}>
-          <div className="card card-comentar" style={{ width: "40rem" }}>
+        <form
+          onSubmit={handleSubmit}
+          className="w-100 mx-3 mx-md-auto"
+          style={{ maxWidth: "40rem" }}
+        >
+          <div className="card card-comentar">
             <div className="card-header text-white">Publicar</div>
-            <div className="card-body  d-grid gap-4">
+            <div className="card-body d-grid gap-4">
               <input
                 className=""
                 onChange={(e) => setFieldValue("path", e.target.files[0])}
@@ -85,7 +89,6 @@ export default function Comentario() {
                 className="btn btn-primary"
                 type="submit"
               >
-                {" "}
                 Comentar
               </button>
             </div>

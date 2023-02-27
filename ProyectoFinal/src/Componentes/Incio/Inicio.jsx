@@ -7,14 +7,13 @@ export default function Inicio() {
     <>
       <section className="imagenseccion1">
         <Header />
-        <div className=" d-flex justify-content-start px-5 flex-column d-grip gap-3 mt-5">
-          <h1 className="text-white tituloseccion1 col-6">
-            Encuentra rapido y facil a esos compañeros de aventura que tanto
-            buscas
+        <div className="d-flex px-5 flex-column gap-3 mt-5">
+          <h1 className="text-white tituloseccion1 col-12 col-md-6">
+            Encuentra rápidamente a esos compañeros de aventura que tanto buscas
           </h1>
           <hr className="border border-secondary border-2 opacity-25 w-50" />
-          <h2 className=" text-secondary col-5 text-end fst-italic">
-            Descubre nuevos juegos y nuevas comunidades.
+          <h2 className="text-secondary col-12 col-md-5 text-end fst-italic">
+            Descubre nuevos juegos y comunidades
           </h2>
         </div>
       </section>
@@ -39,16 +38,17 @@ export default function Inicio() {
         </section>
         <div className="d-flex flex-column align-items-center">
           <hr className="border border-secondary border-2 opacity-25 w-100" />
-          <h1 className=" text-white ">Comparte tus cometarios a tus amigos</h1>
+          <h1 className="text-white">Comparte tus comentarios con amigos</h1>
           <h3 className="text-secondary fst-italic">
-            Descubre gamers con nuestro metodo random.
+            Descubre gamers con nuestro método aleatorio
           </h3>
           <hr className="border border-secondary border-2 opacity-25 w-75" />
           <Link to="login" className="btn btn-outline-primary">
-            Join Us
+            Únete
           </Link>
         </div>
       </div>
+
       <Footer />
     </>
   );

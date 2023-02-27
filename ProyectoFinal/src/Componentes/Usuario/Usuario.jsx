@@ -53,9 +53,9 @@ export default function Perfil({ usuario }) {
   });
   return (
     <>
-      <div className="d-flex justify-content-center mt-5">
-        <div className=" mt-5 mb-5 col-5">
-          <div className="card card-post-usuario" style={{ width: "30rem" }}>
+      <div className="d-flex flex-column flex-md-row justify-content-center mt-5 d.grid gap-3">
+        <div className="col-md-5 mb-5">
+          <div className="card card-post-usuario">
             <img
               src={`http://localhost:3000/${usuario.avatar} `}
               className="card-img-top"
@@ -65,14 +65,13 @@ export default function Perfil({ usuario }) {
             <div className="card-body">
               <h3 className="fst-italic text-white">{usuario.nickname}</h3>
               <h4 className="text-secondary">{usuario.plataforma}</h4>
-
               <hr className="border border-primary border-2 opacity-25 w-100" />
             </div>
           </div>
         </div>
-        <div>
+        <div className="col-md-5">
           <div className="card-update">
-            <div className="card card-post-usuario" style={{ width: "22rem" }}>
+            <div className="card card-post-usuario">
               <div className="card-body text-center card-update-color">
                 <form onSubmit={handleSubmit} className="d-grid gap-2">
                   <h3 className="text-white">Editar usuario</h3>

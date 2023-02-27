@@ -133,18 +133,19 @@ export default function SearchPlayers() {
         <div className="d-flex justify-content-end">
           <hr className="border border-primary border-1 opacity-50 w-75" />
         </div>
-        <div className="container d-flex justify-content-start mt-4">
+        <div className="container d-flex justify-content-center mt-4">
           <div className="">
             {plataforma.length > 0 ? (
-              <div className="d-grid gap-3 d-flex">
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 {plataforma.map((jugador) => (
-                  <BuscandoJugador
-                    key={jugador.id}
-                    plataforma={jugador.plataforma}
-                    nickname={jugador.nickname}
-                    idSala={jugador.idSala}
-                    avatar={jugador.avatar}
-                  />
+                  <div className="col" key={jugador.id}>
+                    <BuscandoJugador
+                      plataforma={jugador.plataforma}
+                      nickname={jugador.nickname}
+                      idSala={jugador.idSala}
+                      avatar={jugador.avatar}
+                    />
+                  </div>
                 ))}
               </div>
             ) : (

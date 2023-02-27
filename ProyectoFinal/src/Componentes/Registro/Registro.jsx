@@ -94,10 +94,10 @@ export default function Registro() {
   //   }, [authorization]);
   return (
     <>
-      <div className="container contenedor-tamaño">
+      <div className="container-fluid contenedor-tamaño">
         <form
           onSubmit={handleSubmit}
-          className="container d-flex justify-content-between align-items-center flex-row gap-3"
+          className="container-fluid d-flex justify-content-center align-items-center flex-row gap-3"
         >
           <div className="col-4 d-grid gap-3">
             <h2 className="text-white">Selecciona tus Juegos</h2>

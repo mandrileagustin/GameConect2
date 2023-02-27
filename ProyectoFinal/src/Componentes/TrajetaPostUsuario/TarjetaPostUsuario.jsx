@@ -2,7 +2,7 @@ import "./TarjetaUsuarioPost.css";
 export default function TarjetaPostUsuario({ comentario, path, nickname }) {
   return (
     <>
-      <div className=" mt-5 mb-5 col-5">
+      <div className=" mt-2 mb-2 col-5">
         <div className="card card-post-usuario" style={{ width: "30rem" }}>
           <img
             src={`http://localhost:3000/${path} `}

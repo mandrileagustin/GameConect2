@@ -41,9 +41,9 @@ export default function MenuChat({ idSala, nombre }) {
     onSubmit,
   });
   return (
-    <div className="mt-5 position-absolute top-0 end-0 me-1">
+    <div className="mt-5 ">
       <button
-        className="btn btn-dark py-3 "
+        className="btn btn-dark py-3"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
@@ -61,7 +61,7 @@ export default function MenuChat({ idSala, nombre }) {
           <h3 className="text-primary">Chat</h3>
           <button
             type="button"
-            className="btn-close bg-primary opacity-25"
+            className="btn-close bg-primary"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>

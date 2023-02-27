@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CardPublicar from "../../Componentes/CardPublicar/CardPublicar";
 import Footer from "../../Componentes/Footer/Footer";
 import TarjetaPost from "../../Componentes/TarjetaPost/TarjetaPost";
+import TituloPagina from "../../Componentes/TituloPagina/TituloPagina";
 
 export default function Home() {
   const [allUserPost, setAllUserPost] = useState([]);
@@ -22,6 +23,7 @@ export default function Home() {
   return (
     <>
       <CardPublicar />
+      {/* <TituloPagina /> */}
       {allUserPost.map((postUsers, index) => (
         <div className="d-flex flex-column align-items-center" key={index}>
           <hr className="border border-white border-2 opacity-25 w-50" />
