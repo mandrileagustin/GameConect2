@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TarjetaPostUsuario from "../../Componentes/TrajetaPostUsuario/TarjetaPostUsuario";
 import CardJuegos from "../../Componentes/CardJuegos/CardJuegos";
+import { useAuthContext } from "../../Context/AuthContext";
+import Menu from "../../Componentes/Menu/Menu";
+import MenuChat from "../../Componentes/Menu/MenuChat";
 
 export default function PerfilUsuario() {
   const { id } = useParams();

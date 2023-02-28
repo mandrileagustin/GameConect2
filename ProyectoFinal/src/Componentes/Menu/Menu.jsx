@@ -7,10 +7,10 @@ export default function Menu() {
   const { logout } = useAuthContext();
 
   return (
-    <div className=" d-flex justify-content-start">
+    <div>
       <div className="row">
         <div className="col-12 col-lg-3">
-          <div className="mt-5">
+          <div className="mt-3">
             <button
               className="btn btn-dark py-3"
               data-bs-toggle="offcanvas"

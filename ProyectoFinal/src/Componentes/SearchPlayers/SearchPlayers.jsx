@@ -64,7 +64,7 @@ export default function SearchPlayers() {
 
   return (
     <>
-      <div className="container mt-5 contenedor-tamaño">
+      <div className="container mt-5">
         <hr className="border border-primary border-1 opacity-50 w-75" />
         <div className="d-flex justify-content-center mb-4">
           <h1 className="text-white">Encuentra tu compañero ideal</h1>

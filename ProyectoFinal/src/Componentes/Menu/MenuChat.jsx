@@ -41,7 +41,7 @@ export default function MenuChat({ idSala, nombre }) {
     onSubmit,
   });
   return (
-    <div className="mt-5 ">
+    <div className="mt-3">
       <button
         className="btn btn-dark py-3"
         type="button"

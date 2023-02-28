@@ -26,7 +26,7 @@ export default function Home() {
       {/* <TituloPagina /> */}
       {allUserPost.map((postUsers, index) => (
         <div className="d-flex flex-column align-items-center" key={index}>
-          <hr className="border border-white border-2 opacity-25 w-50" />
+          <hr className="border border-primary border-2 opacity-25 w-50" />
           <TarjetaPost
             key={postUsers.id}
             comentario={postUsers.comentario}
