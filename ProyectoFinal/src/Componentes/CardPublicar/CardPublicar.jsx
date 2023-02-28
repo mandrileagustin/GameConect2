@@ -5,6 +5,7 @@ import "./CardPublicar.css";
 import Swal from "sweetalert2";
 export default function Comentario() {
   const { authorization } = useAuthContext();
+
   async function onSubmit(values, actions) {
     let formData = new FormData();
     formData.append("imagen", values.path);
@@ -29,7 +30,6 @@ export default function Comentario() {
     });
     console.log(values);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
     actions.resetForm();
   }
   const {
@@ -61,7 +61,11 @@ export default function Comentario() {
             <div className="card-header text-white">Publicar</div>
             <div className="card-body d-grid gap-4">
               <input
-                className=""
+                className={
+                  errors.plataforma && touched.plataforma
+                    ? "form-control is-invalid"
+                    : "form-control opacity-75"
+                }
                 onChange={(e) => setFieldValue("path", e.target.files[0])}
                 onBlur={handleBlur}
                 name="path"

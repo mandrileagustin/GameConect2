@@ -8,8 +8,8 @@ const Juegos = {
   2: "Elden Ring",
   5: "Call of Duty",
   6: "Day Z",
-  7: "LOL",
-  8: "Valorant",
+  7: "Valorant",
+  8: "LOL",
   9: "Battlefield 1",
 };
 export default function Registro() {
@@ -114,8 +114,8 @@ export default function Registro() {
               <option value={2}>Elden Ring</option>
               <option value={5}>Call of Duty</option>
               <option value={6}>Day Z</option>
-              <option value={7}>LOL</option>
-              <option value={8}>Valorant</option>
+              <option value={8}>LOL</option>
+              <option value={7}>Valorant</option>
               <option value={9}>Battlefield 1</option>
             </select>
 

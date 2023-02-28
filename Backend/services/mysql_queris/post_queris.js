@@ -66,7 +66,7 @@ PostQueris.getPostByIdUsuario = async (idUsuario) => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM post join usuario on post.idUsuario = usuario.id where idUsuario = ? order by post.id desc",
+      "SELECT post.id as idpost, usuario.id as idUsuario, post.comentario, usuario.nickname, post.path FROM post join usuario on post.idUsuario = usuario.id where idUsuario = ? order by post.id desc",
       idUsuario,
       "select",
       conn

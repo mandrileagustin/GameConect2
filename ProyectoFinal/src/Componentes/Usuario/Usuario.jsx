@@ -1,13 +1,13 @@
 import { useFormik } from "formik";
 import { useAuthContext } from "../../Context/AuthContext";
 import { UsuarioSchema } from "./UsuarioSchema";
+import UpdateAvatar from "./UpdateAvatar";
 import "./Usuario.css";
-import { useParams } from "react-router-dom";
+
 import Swal from "sweetalert2";
 
 export default function Perfil({ usuario }) {
   const { authorization } = useAuthContext();
-  const params = useParams();
 
   function onSubmit(values, actions) {
     fetch(`http://localhost:3000/user/${authorization.id}`, {
@@ -99,53 +99,7 @@ export default function Perfil({ usuario }) {
                   >
                     {errors.nickname}
                   </div>
-                  <input
-                    className={
-                      errors.plataforma && touched.plataforma
-                        ? "form-control is-invalid"
-                        : "form-control opacity-75"
-                    }
-                    aria-describedby="inputGroup-sizing-sm"
-                    value={values.plataforma}
-                    name="plataforma"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    placeholder="Plataforma"
-                    type="text"
-                  />
-                  <div
-                    className={
-                      errors.plataforma && touched.plataforma
-                        ? "invalid-feeback is-invalid"
-                        : ""
-                    }
-                    id="input-error"
-                  >
-                    {errors.plataforma}
-                  </div>
-                  <input
-                    type="password"
-                    className={
-                      errors.password && touched.password
-                        ? "form-control is-invalid"
-                        : "form-control opacity-75"
-                    }
-                    value={values.password}
-                    name="password"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    placeholder="Password de verificacion"
-                  />
-                  <div
-                    className={
-                      errors.password && touched.password
-                        ? "invalid-feeback is-invalid"
-                        : ""
-                    }
-                    id="input-error"
-                  >
-                    {errors.password}
-                  </div>{" "}
+
                   <button
                     className="btn btn-primary"
                     disabled={isSubmitting}
@@ -154,6 +108,7 @@ export default function Perfil({ usuario }) {
                     <i className="bi bi-check-lg"></i>
                   </button>
                 </form>
+                <UpdateAvatar />
                 <hr className="border border-primary border-2 opacity-25 w-100" />
               </div>
             </div>

@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TarjetaPostUsuario from "../../Componentes/TrajetaPostUsuario/TarjetaPostUsuario";
 import CardJuegos from "../../Componentes/CardJuegos/CardJuegos";
-import { useAuthContext } from "../../Context/AuthContext";
-import Menu from "../../Componentes/Menu/Menu";
-import MenuChat from "../../Componentes/Menu/MenuChat";
 
 export default function PerfilUsuario() {
   const { id } = useParams();
@@ -25,7 +22,22 @@ export default function PerfilUsuario() {
         );
         const dataPost = await responsePost.json();
         setPostUsuarios(dataPost);
+        console.log(dataPost);
 
+        const responseJuegos = await fetch(
+          `http://localhost:3000/user/juegoUsuario/${id}`
+        );
+        const dataJuegos = await responseJuegos.json();
+        setJuegoUsuarios(dataJuegos);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         const responseJuegos = await fetch(
           `http://localhost:3000/user/juegoUsuario/${id}`
         );
@@ -56,6 +68,7 @@ export default function PerfilUsuario() {
                 comentario={postUsuario.comentario}
                 path={postUsuario.path}
                 nickname={postUsuario.nickname}
+                idpost={postUsuario.idpost}
               />
             </div>
           ))}

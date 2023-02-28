@@ -171,7 +171,6 @@ controller.updateImage = async (req, res) => {
       });
       await dao.updateImage(id, {
         avatar: uploadRelPath,
-        producto: req.query.producto,
       });
     });
     return res.send("Imagen subida!");

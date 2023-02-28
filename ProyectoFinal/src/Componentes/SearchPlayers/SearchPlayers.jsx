@@ -136,7 +136,7 @@ export default function SearchPlayers() {
         <div className="container d-flex justify-content-center mt-4">
           <div className="">
             {plataforma.length > 0 ? (
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+              <div className="row row-cols-1 row-cols-md-2 py-3">
                 {plataforma.map((jugador) => (
                   <div className="col" key={jugador.id}>
                     <BuscandoJugador

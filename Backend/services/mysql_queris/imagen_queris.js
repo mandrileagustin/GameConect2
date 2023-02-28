@@ -10,16 +10,10 @@ imagenQueris.addImage = async (imageData) => {
     conn = await db.createConnection();
 
     let imageObj = {
-      ruta: imageData.ruta,
+      avatar: imageData.avatar,
       idUsuario: imageData.idUsuario,
-      idJuego: imageData.idJuego,
     };
-    return await db.query(
-      "INSERT INTO imagenes SET?",
-      imageObj,
-      "insert",
-      conn
-    );
+    return await db.query("INSERT INTO usuario SET?", imageObj, "insert", conn);
   } catch (e) {
     throw new Error(e);
   } finally {

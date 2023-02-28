@@ -6,9 +6,6 @@ const controller = {};
 const __dirname = currentDir().__dirname;
 // controlador para subir una imagen a nuestro servidor y guardar el path en la base de datos.
 controller.uploadImage = async (req, res) => {
-  const { comentario } = req.body;
-  if (!comentario) return res.status(400).send("Error al recibir el body");
-
   try {
     // Controlamos cuando el objeto files sea null
     if (req.files === null) return;
@@ -36,8 +33,7 @@ controller.uploadImage = async (req, res) => {
         if (err) return res.status(500).send(err);
       });
       await dao.addPost({
-        comentario: comentario,
-        path: uploadRelPath,
+        avatar: uploadRelPath,
       });
     });
     return res.send("Imagen subida!");
