@@ -1,6 +1,12 @@
+import { useState } from "react";
 import "./TarjetaPost.css";
 
 export default function TarjetaPost({ comentario, path, nickname, id }) {
+  const [likes, setLikes] = useState([]);
+
+  const handleLike = () => {
+    setLikes([...likes, likes.length + 1]);
+  };
   return (
     <>
       <div className="d-flex justify-content-center">
@@ -19,6 +25,15 @@ export default function TarjetaPost({ comentario, path, nickname, id }) {
               <h3 className="text-white fst-italic">{nickname}</h3>
               <h5 className="text-secondary">{comentario}</h5>
               <hr className="border border-primary border-2 opacity-25 w-100" />
+              <div className="text-start">
+                <button
+                  className="btn btn-primary d-grid gap-2 d-flex"
+                  onClick={handleLike}
+                >
+                  <i class="bi bi-heart-fill"></i>
+                  {likes.length}
+                </button>
+              </div>
             </div>
           </div>
         </div>

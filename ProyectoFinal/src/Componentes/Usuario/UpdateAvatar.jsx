@@ -12,8 +12,8 @@ export default function Avatar() {
     let formData = new FormData();
     formData.append("imagen", values.avatar);
 
-    fetch(`http://localhost:3000/post/avatar/${authorization.id}`, {
-      method: "PATCH",
+    fetch(`http://localhost:3000/user/imagen/${authorization.id}`, {
+      method: "POST",
 
       body: formData,
     }).then((response) => {
@@ -40,6 +40,7 @@ export default function Avatar() {
     touched,
     errors,
     handleBlur,
+    setFieldValue,
     handleChange,
     handleSubmit,
     isSubmitting,
@@ -53,9 +54,9 @@ export default function Avatar() {
   return (
     <>
       <div>
-        <div className="card-body text-center card-update-color">
+        <div className="card-body">
           <form onSubmit={handleSubmit} className="d-grid gap-2">
-            <h3 className="text-white">Cambiar foto</h3>
+            <h4 className="text-white">Subir foto de perfil </h4>
             <input
               className={
                 errors.plataforma && touched.plataforma

@@ -1,20 +1,21 @@
 export default function TituloPagina() {
   return (
-    <div className="d-flex justify-content-start flex-column">
-      <div>
-        <h3>G</h3>
-        <h3>A</h3>
-        <h3>M</h3>
-        <h3>E</h3>
+    <div className="opacity-50">
+      <div className="d-grid gap-3 text-primary">
+        <h2 className="text-white">G</h2>
+        <h2>A</h2>
+        <h2 className="text-white">M</h2>
+        <h2>E</h2>
       </div>
-      <div>
-        <h3>C</h3>
-        <h3>O</h3>
-        <h3>N</h3>
-        <h3>N</h3>
-        <h3>E</h3>
-        <h3>C</h3>
-        <h3>T</h3>
+      <hr className="border border-primary border-2 opacity-100 w-100" />
+      <div className="d-grid gap-3 text-primary">
+        <h2 className="text-white">C</h2>
+        <h2>O</h2>
+        <h2 className="text-white">N</h2>
+        <h2>N</h2>
+        <h2 className="text-white">E</h2>
+        <h2>C</h2>
+        <h2 className="text-white">T</h2>
       </div>
     </div>
   );

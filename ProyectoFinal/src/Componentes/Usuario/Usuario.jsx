@@ -46,14 +46,13 @@ export default function Perfil({ usuario }) {
   } = useFormik({
     initialValues: {
       nickname: "",
-      plataforma: "",
     },
     validationSchema: UsuarioSchema,
     onSubmit,
   });
   return (
     <>
-      <div className="d-flex flex-column flex-md-row justify-content-center mt-5 d.grid gap-3">
+      <div className="d-flex flex-column flex-md-row justify-content-center mt-5 d.grid gap-5">
         <div className="col-md-5 mb-5">
           <div className="card card-post-usuario">
             <img
@@ -74,7 +73,7 @@ export default function Perfil({ usuario }) {
             <div className="card card-post-usuario">
               <div className="card-body text-center card-update-color">
                 <form onSubmit={handleSubmit} className="d-grid gap-2">
-                  <h3 className="text-white">Editar usuario</h3>
+                  <h4 className="text-white">Editar Nickname</h4>
                   <input
                     className={
                       errors.nickname && touched.nickname
@@ -107,8 +106,9 @@ export default function Perfil({ usuario }) {
                   >
                     <i className="bi bi-check-lg"></i>
                   </button>
+                  <UpdateAvatar />
                 </form>
-                <UpdateAvatar />
+                <div></div>
                 <hr className="border border-primary border-2 opacity-25 w-100" />
               </div>
             </div>

@@ -152,7 +152,7 @@ controller.updateImage = async (req, res) => {
     if (req.files === null) return;
     // Controlamos si nos viene algún tipo de archivo en el objeto files
     if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send("No se ha cargado ningún archivo8558");
+      return res.status(400).send("No se ha cargado ningún archivo");
     }
     // 1 archivo [{}] , >1 archivo [[{},{},...]]
     // Obtenemos un array de objetos con todas las imagenes
@@ -171,6 +171,7 @@ controller.updateImage = async (req, res) => {
       });
       await dao.updateImage(id, {
         avatar: uploadRelPath,
+        poducto: req.query.poducto,
       });
     });
     return res.send("Imagen subida!");

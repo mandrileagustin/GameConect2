@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TarjetaPostUsuario from "../../Componentes/TrajetaPostUsuario/TarjetaPostUsuario";
 import CardJuegos from "../../Componentes/CardJuegos/CardJuegos";
-
 export default function PerfilUsuario() {
   const { id } = useParams();
   const [postUsuarios, setPostUsuarios] = useState([]);
@@ -56,6 +55,7 @@ export default function PerfilUsuario() {
         <div className="mb-3">
           <Usuario usuario={usuario} />
         </div>
+
         <hr className="border border-primary border-2 opacity-25 w-100" />
         <div>
           <h2 className="text-white text-center"> Tus Publicaciones</h2>
@@ -74,9 +74,9 @@ export default function PerfilUsuario() {
           ))}
         </div>
         <hr className="border border-primary border-2 opacity-25 w-100" />
-        <div className="d-grid gap-5">
+        <div className="d-grid gap-4">
           <h2 className="text-white text-center"> Tus Juegos</h2>
-          <div className="d-flex flex-wrap d-grid gap-5 mb-5">
+          <div className="d-flex flex-wrap d-grid gap-5 mb-5 justify-content-center">
             {juegoUsuarios.map((juegoUsuario) => (
               <CardJuegos
                 key={juegoUsuario.id}
