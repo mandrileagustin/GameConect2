@@ -49,7 +49,7 @@ export default function MenuChat({ idSala, nombre }) {
         data-bs-target="#offcanvasRight"
         aria-controls="offcanvasRight"
       >
-        <i className="bi bi-chat-left-fill text-primary"></i>{" "}
+        <i className="bi bi-chat-left-fill text-primary opacity-75"></i>{" "}
       </button>
       <div
         className="offcanvas offcanvas-end barra-chat"
