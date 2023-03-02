@@ -15,7 +15,7 @@ export default function Header() {
             {!authorization?.email ? (
               <Link
                 to="login"
-                className="btn btn-outline-primary px-4 me-4"
+                className="btn btn-primary px-4 me-4 "
                 aria-current="page"
               >
                 Login
@@ -23,7 +23,7 @@ export default function Header() {
             ) : (
               <Link
                 to="home"
-                className="btn btn-outline-primary px-4 me-4"
+                className="btn btn-primary px-4 me-4"
                 aria-current="page"
               >
                 Login

@@ -46,7 +46,7 @@ export default function ChatBody({
           } else {
             return (
               <div className="message__chats" key={message.id}>
-                <p className="text-secondary">{message.name}</p>
+                <p className="text-white">{message.name}</p>
                 <div className="message__recipient">
                   <p className="text-white">{message.message}</p>
                 </div>

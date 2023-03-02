@@ -43,7 +43,7 @@ export default function Inicio() {
             Descubre gamers con nuestro método aleatorio
           </h3>
           <hr className="border border-secondary border-2 opacity-25 w-75" />
-          <Link to="login" className="btn btn-outline-primary">
+          <Link to="login" className="btn btn-primary">
             Únete
           </Link>
         </div>

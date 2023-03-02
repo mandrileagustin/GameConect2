@@ -8,7 +8,7 @@ export default function BuscandoJugador({
 }) {
   return (
     <>
-      <div className="card card-buscar-jugadores" style={{ width: "20rem" }}>
+      <div className="card card-buscar-jugadores" style={{ width: "18rem" }}>
         <img
           src={`http://localhost:3000/${avatar}`}
           style={{ height: "20rem", objectFit: "cover" }}

@@ -52,7 +52,7 @@ export default function Perfil({ usuario }) {
   });
   return (
     <>
-      <div className="d-flex flex-column flex-md-row justify-content-center mt-5 d.grid gap-5">
+      <div className="d-flex flex-column flex-md-row justify-content-center mt-5 d-grid gap-4">
         <div className="col-md-5 mb-5">
           <div className="card card-post-usuario">
             <img
@@ -72,6 +72,7 @@ export default function Perfil({ usuario }) {
           <div className="card-update">
             <div className="card card-post-usuario">
               <div className="card-body text-center card-update-color">
+                <UpdateAvatar />
                 <form onSubmit={handleSubmit} className="d-grid gap-2">
                   <h4 className="text-white">Editar Nickname</h4>
                   <input
@@ -106,9 +107,7 @@ export default function Perfil({ usuario }) {
                   >
                     <i className="bi bi-check-lg"></i>
                   </button>
-                  <UpdateAvatar />
                 </form>
-                <div></div>
                 <hr className="border border-primary border-2 opacity-25 w-100" />
               </div>
             </div>

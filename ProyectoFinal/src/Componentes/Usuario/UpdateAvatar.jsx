@@ -54,7 +54,7 @@ export default function Avatar() {
   return (
     <>
       <div>
-        <div className="card-body">
+        <div>
           <form onSubmit={handleSubmit} className="d-grid gap-2">
             <h4 className="text-white">Subir foto de perfil </h4>
             <input

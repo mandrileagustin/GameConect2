@@ -6,9 +6,9 @@
   }
   .chat__sidebar {
     height: 100%;
-    background: linear-gradient(200deg,  #4c0044 , rgb(0, 0, 0));
+    background: linear-gradient(220deg,  #6f0064 , rgb(0, 11, 75));
     flex: 0.2;
-    padding: 20px;
+    padding: 16px;
   }
   .chat__main {
     height: 100%;
@@ -34,7 +34,7 @@
     align-items: center;
     justify-content:space-evenly;
     padding: 20px;
-    background: linear-gradient(120deg,  #4c0044 , rgb(0, 0, 0));
+    background: linear-gradient(70deg,  #6f0064 , rgb(0, 11, 75));
   }
   .leaveChat__btn {
     padding: 10px;
@@ -59,7 +59,7 @@
   }
   .chat__footer {
     padding: 10px;
-    background: linear-gradient(200deg,  #4c0044 , rgb(0, 0, 0));
+    background: linear-gradient(190deg,  #6f0064 , rgb(0, 11, 75));
     height: 10vh;
   }
   .form {
@@ -88,14 +88,14 @@
   }
 
   .message__recipient {
-    background-color: #1a006f;
+    background-color: #012470;
     width: 300px;
     padding: 10px;
     border-radius: 10px;
     font-size: 15px;
   }
   .message__sender {
-    background-color: rgb(149, 128, 255);
+    background-color: rgb(231, 252, 251);
     max-width: 300px;
     padding: 10px;
     border-radius: 10px;
@@ -110,7 +110,7 @@
   }
   .message__status {
     position: fixed;
-    bottom: 80px;
+    bottom: 50px;
     font-size: 13px;
     font-style: italic;
   }

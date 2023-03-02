@@ -30,7 +30,7 @@ export default function TarjetaPostUsuario({
   }
   return (
     <>
-      <div className=" mt-2 mb-2 col-5">
+      <div className=" mt-4 mb-2 col-5">
         <div
           className="card card-post-usuario"
           style={{ width: "30rem", height: "34rem" }}
