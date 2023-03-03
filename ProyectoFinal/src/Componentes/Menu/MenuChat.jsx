@@ -3,9 +3,27 @@ import { BasicFormSchema } from "./BuscandoJugadorSchema";
 import { useAuthContext } from "../../Context/AuthContext";
 import { Link } from "react-router-dom";
 import "./Menu.css";
+import { useEffect, useState } from "react";
 
-export default function MenuChat({ idSala, nombre }) {
+export default function MenuChat({ idSala }) {
   const { authorization } = useAuthContext();
+  const [sala, setUserSala] = useState([]);
+
+  useEffect(() => {
+    const fechData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/chat`);
+        const data = await response.json();
+        setUserSala(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fechData();
+  }, []);
+
+  const filterUsario = sala.filter((salaId) => salaId.id !== idSala);
 
   async function onSubmit(values, action) {
     fetch(`http://localhost:3000/chat/addRoom/${authorization.id}`, {
@@ -103,10 +121,29 @@ export default function MenuChat({ idSala, nombre }) {
         <div className="d-flex justify-content-center">
           <hr className="border border-primary border-2 opacity-25 w-75" />
         </div>
-        <div className="d-flex justify-content-center mt-3">
-          <Link className="text-decoration-none" to={`/chat/${idSala}`}>
-            <h4>{nombre}</h4>
+        <div className="d-flex justify-content-center mt-2">
+          <Link
+            className="text-decoration-none sala-hover"
+            to={`/chat/${idSala}`}
+          >
+            <h3>Mi sala</h3>
           </Link>
+        </div>
+        <div className="d-grid gap-3 d-flex justify-content-center flex-column">
+          <div className="d-flex justify-content-center">
+            <hr className="border border-primary border-2 opacity-25 w-75" />
+          </div>
+          <h4 className="text-secondary text-center">Salas conectadas</h4>
+          {filterUsario?.map((chatUsuarios) => (
+            <div className="d-flex justify-content-center mt-3">
+              <Link
+                className="sala-hover text-decoration-none"
+                to={`/chat/${chatUsuarios.id}`}
+              >
+                <h5>{chatUsuarios.nombre}</h5>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>

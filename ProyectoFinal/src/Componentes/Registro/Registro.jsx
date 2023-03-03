@@ -162,10 +162,9 @@ export default function Registro() {
             <hr className="border border-primary border-2 opacity-25 w-100" />
             <div>
               <h3 className="text-secondary">
-                <Link to={"/login"} className="text-decoration-none">
+                <Link to={"/login"} className="text-decoration-none sala-hover">
                   Login
                 </Link>
-                <hr className="border border-primary border-2 opacity-25 w-25" />
               </h3>
             </div>
           </div>

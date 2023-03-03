@@ -71,7 +71,7 @@ export default function Avatar() {
               type="file"
             />
             <button
-              className="btn btn-primary"
+              className="boton-inicio"
               disabled={isSubmitting}
               type="submit"
             >

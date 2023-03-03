@@ -27,7 +27,7 @@ export default function TarjetaPost({ comentario, path, nickname, id }) {
               <hr className="border border-primary border-2 opacity-25 w-100" />
               <div className="text-start">
                 <button
-                  className="btn btn-primary d-grid gap-2 d-flex"
+                  className="boton-inicio d-grid gap-2 d-flex"
                   onClick={handleLike}
                 >
                   <i class="bi bi-heart-fill"></i>

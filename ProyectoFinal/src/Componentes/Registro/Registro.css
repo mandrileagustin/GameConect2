@@ -27,3 +27,23 @@
 .contenedor-tamaño{
   height: 100vh;
 }
+
+.sala-hover{
+  
+  color: aliceblue;
+  transition: 0.5s;
+}
+
+.sala-hover:hover{
+  padding-top: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border: 2px solid;
+  color: rgb(255, 255, 255); 
+  background: linear-gradient(400deg,  #006dac , rgb(141, 1, 134));
+  text-align: center;
+}

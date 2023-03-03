@@ -4,7 +4,6 @@ import "./Chat.css";
 import ChatBar from "./ChatBar";
 import ChatBody from "./ChatBody";
 import ChatFooter from "./ChatFooter";
-
 import { useAuthContext } from "../../Context/AuthContext";
 
 export default function Chat({ chat }) {

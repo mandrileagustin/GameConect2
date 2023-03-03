@@ -41,21 +41,21 @@ export default function Menu() {
                 ></button>
               </div>
               <div className="offcanvas-body">
-                <div className="text-white d-grid gap-2">
+                <div className=" d-grid gap-2 text-center">
                   <hr className="border border-primary border-1 opacity-25 w-100" />
-                  <Link className="text-decoration-none text-white" to="/Home">
+                  <Link className="text-decoration-none sala-hover" to="/Home">
                     <h3 className="fst-italic">Feed</h3>
                   </Link>
                   <hr className="border border-primary border-1 opacity-25 w-100" />
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none sala-hover"
                     to={`/perfilUsuario/${authorization.id}`}
                   >
                     <h3 className="fst-italic">Mis Juegos</h3>
                   </Link>
                   <hr className="border border-primary border-1 opacity-25 w-100" />
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none sala-hover"
                     to="/buscarjugador"
                   >
                     <h3 className="fst-italic">Buscar Jugadores</h3>
@@ -72,7 +72,7 @@ export default function Menu() {
                   <hr className="border border-primary border-1 opacity-25 w-100" />
                   <Link
                     className="text-decoration-none text-white"
-                    to="/login"
+                    to="/"
                     onClick={logout}
                   >
                     <h4 className="fst-italic">Logout</h4>

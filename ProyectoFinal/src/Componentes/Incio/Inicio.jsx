@@ -36,14 +36,14 @@ export default function Inicio() {
             className="rounded-end"
           />
         </section>
-        <div className="d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center mb-4">
           <hr className="border border-secondary border-2 opacity-25 w-100" />
           <h1 className="text-white">Comparte tus comentarios con amigos</h1>
           <h3 className="text-secondary fst-italic">
             Descubre gamers con nuestro método aleatorio
           </h3>
           <hr className="border border-secondary border-2 opacity-25 w-75" />
-          <Link to="login" className="btn btn-primary">
+          <Link to="login" className="boton-inicio text-decoration-none">
             Únete
           </Link>
         </div>

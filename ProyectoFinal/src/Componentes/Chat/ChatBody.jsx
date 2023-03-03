@@ -21,12 +21,12 @@ export default function ChatBody({
   return (
     <>
       <header className="chat__mainHeader">
-        <button className="btn btn-danger" onClick={handleLeaveChat}>
+        <button className="boton-salir" onClick={handleLeaveChat}>
           LEAVE CHAT
         </button>
         <hr className="border border-primary border-2 opacity-25 h-100" />
 
-        <button onClick={joinRoom} className="btn btn-primary ">
+        <button onClick={joinRoom} className="btn btn-secondary sala-hover">
           Unirse al chat
         </button>
       </header>

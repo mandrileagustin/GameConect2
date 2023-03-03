@@ -9,11 +9,11 @@ export default function Login() {
   const { login, authorization } = useAuthContext();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (authorization) {
-  //     navigate("home");
-  //   }
-  // }, [authorization]);
+  useEffect(() => {
+    if (authorization.email) {
+      navigate("/home");
+    }
+  }, [authorization]);
 
   async function onSubmit(values, actions) {
     login(values);
@@ -90,7 +90,7 @@ export default function Login() {
               disabled={isSubmitting}
               type="submit"
               value="Login"
-              className="btn btn-primary col-6"
+              className="boton-login col-6"
             >
               Login
             </button>
@@ -108,7 +108,7 @@ export default function Login() {
           Registrate para continuar
         </h2>
         <div className="d-flex justify-content-end col-12">
-          <Link className="btn btn-primary col-4" to={"/registro"}>
+          <Link className="sala-hover text-decoration-none " to={"/registro"}>
             Ir a registro
           </Link>
         </div>

@@ -71,7 +71,7 @@ export default function Perfil({ usuario }) {
         <div className="col-md-5">
           <div className="card-update">
             <div className="card card-post-usuario">
-              <div className="card-body text-center card-update-color">
+              <div className="card-body text-center card-update-color d-grid gap-2">
                 <UpdateAvatar />
                 <form onSubmit={handleSubmit} className="d-grid gap-2">
                   <h4 className="text-white">Editar Nickname</h4>
@@ -101,7 +101,7 @@ export default function Perfil({ usuario }) {
                   </div>
 
                   <button
-                    className="btn btn-primary"
+                    className="boton-inicio"
                     disabled={isSubmitting}
                     type="submit"
                   >

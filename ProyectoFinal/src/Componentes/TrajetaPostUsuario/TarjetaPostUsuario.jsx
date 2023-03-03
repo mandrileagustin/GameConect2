@@ -46,10 +46,7 @@ export default function TarjetaPostUsuario({
             <h5 className="text-secondary">{comentario}</h5>
             <hr className="border border-primary border-2 opacity-25 w-100" />
             <div className="d-flex justify-content-end">
-              <button
-                className="btn  text-secondary text-center"
-                onClick={deletePost}
-              >
+              <button className="boton-inicio text-center" onClick={deletePost}>
                 Borrar publicacion
                 <i className="bi bi-x-lg text-danger ms-2"></i>
               </button>

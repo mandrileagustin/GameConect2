@@ -42,3 +42,23 @@
     opacity: 1;
     filter: contrast(100%);
 }
+.boton-inicio{
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+    background: none;
+    border: none;
+}
+
+.boton-inicio:hover{
+    padding-top: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 8px;
+    border-radius: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border: 2px solid;
+    color: rgb(255, 255, 255); 
+    background: linear-gradient(400deg,  #0012b4 , rgb(158, 1, 1));
+    text-align: center;
+}

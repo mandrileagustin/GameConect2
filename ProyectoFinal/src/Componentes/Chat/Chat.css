@@ -114,3 +114,24 @@
     font-size: 13px;
     font-style: italic;
   }
+
+  .boton-salir{
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+    background: none;
+    border: none;
+}
+
+.boton-salir:hover{
+    padding-top: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 8px;
+    border-radius: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border: 2px solid;
+    color: rgb(255, 255, 255); 
+    background: linear-gradient(400deg,  #ac5300 , rgb(141, 1, 1));
+    text-align: center;
+}
