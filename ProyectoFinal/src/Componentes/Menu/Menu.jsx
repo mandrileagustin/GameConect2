@@ -10,9 +10,9 @@ export default function Menu() {
     <div>
       <div className="row">
         <div className="col-12 col-lg-3">
-          <div className="mt-3">
+          <div className="mt-3 ms-2">
             <button
-              className="btn btn-dark py-3"
+              className="boton-inicio py-4"
               data-bs-toggle="offcanvas"
               href="#offcanvasExample"
               role="button"
@@ -70,13 +70,12 @@ export default function Menu() {
                     <h4 className="fst-italic">Mi perfil</h4>
                   </Link>
                   <hr className="border border-primary border-1 opacity-25 w-100" />
-                  <Link
-                    className="text-decoration-none text-white"
-                    to="/"
+                  <button
+                    className="text-decoration-none boton-inicio"
                     onClick={logout}
                   >
                     <h4 className="fst-italic">Logout</h4>
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

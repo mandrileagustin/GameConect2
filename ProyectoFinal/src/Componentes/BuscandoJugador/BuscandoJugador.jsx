@@ -19,7 +19,10 @@ export default function BuscandoJugador({
           <h4 className="card-text text-primary">{nickname}</h4>
           <p className="card-text text-white">{plataforma}</p>
           <div className="d-grid gap-2">
-            <Link className="btn btn-primary" to={`/chat/${idSala}`}>
+            <Link
+              className="sala-hover text-decoration-none"
+              to={`/chat/${idSala}`}
+            >
               Conectar sala
             </Link>
           </div>

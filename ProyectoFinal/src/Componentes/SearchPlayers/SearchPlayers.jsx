@@ -41,8 +41,13 @@ export default function SearchPlayers() {
     });
     const data = await response.json();
     setPlataforma(data);
+    console.log(plataforma);
     actions.resetForm();
   }
+
+  const filterUsario = plataforma.filter(
+    (usuario) => usuario.idUser !== authorization.id
+  );
 
   const {
     values,
@@ -117,7 +122,7 @@ export default function SearchPlayers() {
               </div>
 
               <button
-                className="btn btn-primary"
+                className="boton-inicio"
                 type="submit"
                 disabled={isSubmitting}
                 onClick={() => {
@@ -137,7 +142,7 @@ export default function SearchPlayers() {
           <div className="">
             {plataforma.length > 0 ? (
               <div className="row  py-3">
-                {plataforma.map((jugador) => (
+                {filterUsario.map((jugador) => (
                   <div
                     className="col row-cols-1 row-cols-md-2"
                     key={jugador.id}

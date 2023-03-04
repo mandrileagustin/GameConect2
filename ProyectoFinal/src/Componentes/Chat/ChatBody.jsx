@@ -26,7 +26,7 @@ export default function ChatBody({
         </button>
         <hr className="border border-primary border-2 opacity-25 h-100" />
 
-        <button onClick={joinRoom} className="btn btn-secondary sala-hover">
+        <button onClick={joinRoom} className="boton-inicio ">
           Unirse al chat
         </button>
       </header>

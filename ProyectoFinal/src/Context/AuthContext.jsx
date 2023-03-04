@@ -5,10 +5,10 @@ import MY_AUTH_APP from "../Componentes/const/const";
 
 const AuthContext = createContext({
   authorization: {
-    email: "null",
-    role: "null",
-    id: "null",
-    nickname: "null",
+    email: null,
+    role: null,
+    id: null,
+    nickname: null,
   },
   login: () => {},
   logout: () => {},
@@ -20,10 +20,10 @@ export default AuthContext;
 export function AuthContextProvider({ children }) {
   const [authorization, setAuthorization] = useState(
     JSON.parse(window.localStorage.getItem(MY_AUTH_APP)) ?? {
-      email: "null",
-      role: "null",
-      id: "null",
-      nickname: "null",
+      email: null,
+      role: null,
+      id: null,
+      nickname: null,
     }
   );
   const [errorMessage, setErrorMessage] = useState(null);
@@ -55,6 +55,7 @@ export function AuthContextProvider({ children }) {
       id: null,
       nickname: null,
     });
+    window.location = "/";
   }
 
   const value = {

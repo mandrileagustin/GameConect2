@@ -1,6 +1,6 @@
 export default function TituloPagina() {
   return (
-    <div className="opacity-50">
+    <div className="opacity-25">
       <div className="d-grid gap-3 text-primary">
         <h2 className="text-white">G</h2>
         <h2>A</h2>

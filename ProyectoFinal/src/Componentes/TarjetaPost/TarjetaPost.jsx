@@ -30,7 +30,7 @@ export default function TarjetaPost({ comentario, path, nickname, id }) {
                   className="boton-inicio d-grid gap-2 d-flex"
                   onClick={handleLike}
                 >
-                  <i class="bi bi-heart-fill"></i>
+                  <i className="bi bi-heart-fill"></i>
                   {likes.length}
                 </button>
               </div>

@@ -26,11 +26,12 @@ export default function Layout() {
   return (
     <>
       <Outlet />
-
-      <div className="fixed-top mt-5 d-flex flex-column w-25 px-2">
-        <Menu />
-        <MenuChat idSala={sala.idSala} nombre={sala.nombre} />
-      </div>
+      {authorization?.email && (
+        <div className="fixed-top mt-5 d-flex flex-column w-25 px-2">
+          <Menu />
+          <MenuChat idSala={sala.idSala} nombre={sala.nombre} />
+        </div>
+      )}
     </>
   );
 }

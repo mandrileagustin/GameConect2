@@ -59,9 +59,9 @@ export default function MenuChat({ idSala }) {
     onSubmit,
   });
   return (
-    <div className="mt-3">
+    <div className="mt-3 ms-2">
       <button
-        className="btn btn-dark py-3"
+        className="boton-inicio py-4"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
@@ -123,7 +123,7 @@ export default function MenuChat({ idSala }) {
         </div>
         <div className="d-flex justify-content-center mt-2">
           <Link
-            className="text-decoration-none sala-hover"
+            className="text-decoration-none boton-inicio"
             to={`/chat/${idSala}`}
           >
             <h3>Mi sala</h3>
@@ -135,7 +135,10 @@ export default function MenuChat({ idSala }) {
           </div>
           <h4 className="text-secondary text-center">Salas conectadas</h4>
           {filterUsario?.map((chatUsuarios) => (
-            <div className="d-flex justify-content-center mt-3">
+            <div
+              className="d-flex justify-content-center mt-3"
+              key={chatUsuarios.idUsuario}
+            >
               <Link
                 className="sala-hover text-decoration-none"
                 to={`/chat/${chatUsuarios.id}`}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TarjetaPostUsuario from "../../Componentes/TrajetaPostUsuario/TarjetaPostUsuario";
 import CardJuegos from "../../Componentes/CardJuegos/CardJuegos";
+
 export default function PerfilUsuario() {
   const { id } = useParams();
   const [postUsuarios, setPostUsuarios] = useState([]);
@@ -62,9 +63,8 @@ export default function PerfilUsuario() {
         </div>
         <div className="d-flex flex-wrap d-grid gap-5 justify-content-center">
           {postUsuarios.map((postUsuario) => (
-            <div>
+            <div key={postUsuario.idpost}>
               <TarjetaPostUsuario
-                key={postUsuario.id}
                 comentario={postUsuario.comentario}
                 path={postUsuario.path}
                 nickname={postUsuario.nickname}

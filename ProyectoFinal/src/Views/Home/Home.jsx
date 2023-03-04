@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CardPublicar from "../../Componentes/CardPublicar/CardPublicar";
 import Footer from "../../Componentes/Footer/Footer";
+
 import TarjetaPost from "../../Componentes/TarjetaPost/TarjetaPost";
 import TituloPagina from "../../Componentes/TituloPagina/TituloPagina";
 
@@ -37,6 +38,7 @@ export default function Home() {
       <div className="d-flex fixed-top w-25 justify-content-center mt-3 text-center">
         <TituloPagina />
       </div>
+
       <Footer />
     </>
   );

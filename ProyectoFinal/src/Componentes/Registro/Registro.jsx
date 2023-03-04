@@ -122,7 +122,7 @@ export default function Registro() {
             <button
               onClick={handleCheck}
               type="button"
-              className="btn btn-primary"
+              className="boton-inicio"
             >
               Añadir
             </button>
@@ -325,7 +325,7 @@ export default function Registro() {
               <hr className="border border-primary border-2 opacity-25 w-100" />
               <div className="d-grid gap-3">
                 <button
-                  className="btn btn-primary"
+                  className="boton-inicio"
                   disabled={isSubmitting}
                   type="submit"
                 >

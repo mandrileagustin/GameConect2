@@ -58,7 +58,7 @@ export default function Comentario() {
           style={{ maxWidth: "40rem" }}
         >
           <div className="card card-comentar">
-            <div className="card-header text-white">Publicar</div>
+            <div className="card-header text-white">Comparte tus aventuras</div>
             <div className="card-body d-grid gap-4">
               <input
                 className={
@@ -93,7 +93,7 @@ export default function Comentario() {
                 className="boton-inicio"
                 type="submit"
               >
-                Comentar
+                Publicar
               </button>
             </div>
           </div>

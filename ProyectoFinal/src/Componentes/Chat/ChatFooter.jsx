@@ -33,7 +33,7 @@ export default function ChatFooter({
           //Esto manda un evento cuando se escribe un mensaje a Socket.io
           onKeyDown={handleTyping}
         />
-        <button className="sendBtn btn btn-primary me-5 py-2">
+        <button className="sala-hover me-5 py-2 px-5">
           <i class="bi bi-send-fill"></i>
         </button>
       </form>

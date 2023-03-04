@@ -5,17 +5,10 @@ import { SignJWT, jwtVerify } from "jose";
 
 const controller = {};
 const __dirname = currentDir().__dirname;
-controller.addUser = async (req, res) => {
-  const {
-    nombre,
-    email,
-    password,
-    apellido,
-    plataforma,
 
-    nickname,
-    juegos,
-  } = req.body;
+controller.addUser = async (req, res) => {
+  const { nombre, email, password, apellido, plataforma, nickname, juegos } =
+    req.body;
 
   if (!nombre || !email || !password || !apellido || !plataforma || !nickname)
     return res.status(400).send("Error al recibir el body");

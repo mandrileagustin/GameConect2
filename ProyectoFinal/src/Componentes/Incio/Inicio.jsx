@@ -11,15 +11,15 @@ export default function Inicio() {
           <h1 className="text-white tituloseccion1 col-12 col-md-6">
             Encuentra rápidamente a esos compañeros de aventura que tanto buscas
           </h1>
-          <hr className="border border-secondary border-2 opacity-25 w-50" />
+          <hr className="border border-primary border-2 opacity-25 w-50" />
           <h2 className="text-secondary col-12 col-md-5 text-end fst-italic">
-            Descubre nuevos juegos y comunidades
+            Descubre nuevos juegos y comunidades...
           </h2>
         </div>
       </section>
 
       <div className="imagenseccion2">
-        <hr className="border border-secondary border-2 opacity-25 w-75" />
+        <hr className="border border-primary border-2 opacity-25 w-75" />
         <section className="carrousel-inicio">
           <img
             src="../src/assets/Imagenes/battlefield.jpg"
@@ -37,12 +37,12 @@ export default function Inicio() {
           />
         </section>
         <div className="d-flex flex-column align-items-center mb-4">
-          <hr className="border border-secondary border-2 opacity-25 w-100" />
+          <hr className="border border-primary border-2 opacity-25 w-100" />
           <h1 className="text-white">Comparte tus comentarios con amigos</h1>
           <h3 className="text-secondary fst-italic">
             Descubre gamers con nuestro método aleatorio
           </h3>
-          <hr className="border border-secondary border-2 opacity-25 w-75" />
+          <hr className="border border-primary border-2 opacity-25 w-75" />
           <Link to="login" className="boton-inicio text-decoration-none">
             Únete
           </Link>
