@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Context/AuthContext";
 import "./Chat.css";
@@ -18,6 +18,10 @@ export default function ChatBody({
     window.location.reload();
   };
 
+  useEffect(() => {
+    joinRoom();
+  }, []);
+
   return (
     <>
       <header className="chat__mainHeader">
@@ -25,10 +29,6 @@ export default function ChatBody({
           LEAVE CHAT
         </button>
         <hr className="border border-primary border-2 opacity-25 h-100" />
-
-        <button onClick={joinRoom} className="boton-inicio ">
-          Unirse al chat
-        </button>
       </header>
 
       {/*This shows messages sent from you*/}

@@ -33,8 +33,10 @@ controller.addPost = async (req, res) => {
         comentario: comentario,
         path: uploadRelPath,
       });
-      if (addPost)
-        return res.send(`post ${comentario} con id ${addPost} registrado`);
+      if (addPost) {
+        const posts = await dao.getPost();
+        return res.send(posts);
+      }
     });
   } catch (e) {
     console.log(e.message);
@@ -88,8 +90,7 @@ controller.getPostByPath = async (req, res) => {
 controller.getPost = async (req, res) => {
   try {
     const post = await dao.getPost();
-    // Si no existe devolvemos un 404 (not found)
-    // Devolvemos la ruta donde se encuentra la imagen
+
     return res.send(post);
   } catch (e) {
     console.log(e.message);
@@ -123,9 +124,12 @@ controller.deletePost = async (req, res) => {
 
     await dao.deletePost(req.params.id);
 
-    return res.send(`Post con id ${req.params.id} eliminado`);
+    const posts = await dao.getPostByIdUsuario(req.params.idUsuario);
+
+    return res.send(posts);
   } catch (e) {
     console.log(e.message);
   }
 };
+
 export default controller;

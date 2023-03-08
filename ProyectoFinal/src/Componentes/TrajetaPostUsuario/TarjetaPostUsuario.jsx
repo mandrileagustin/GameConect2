@@ -1,36 +1,43 @@
 import "./TarjetaUsuarioPost.css";
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
-
+import { useAuthContext } from "../../Context/AuthContext";
 export default function TarjetaPostUsuario({
   comentario,
   path,
   nickname,
   idpost,
+  setPostUsuarios,
 }) {
-  function deletePost() {
-    fetch(`http://localhost:3000/post/${idpost}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(),
-    }).then((response) => {
-      console.log(response.status);
-      if (response.status === 400) {
-        alert("error al recibir el body");
-      } else if (response.status === 200) {
-        Swal.fire({
-          position: "center",
-          title: "Se ha eliminado la publicacion con exito",
-          confirmButtonColor: "rgb(251, 82, 0)",
-        });
+  const { authorization } = useAuthContext();
+  async function deletePost() {
+    const response = await fetch(
+      `http://localhost:3000/post/${idpost}/${authorization.id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
       }
-    });
+    );
+    if (response.status === 400) {
+      alert("error al recibir el body");
+    } else if (response.status === 200) {
+      const posts = await response.json();
+      setPostUsuarios(posts);
+
+      Swal.fire({
+        position: "center",
+        title: "Publicacion eliminada con exito",
+        confirmButtonColor: "#00074a",
+      });
+    } else if (response.status === 409) {
+      alert("");
+    }
   }
   return (
     <>
-      <div className=" mt-4 mb-2 col-5">
+      <div className="mt-4 mb-2 col-5">
         <div
           className="card card-post-usuario"
           style={{ width: "30rem", height: "34rem" }}

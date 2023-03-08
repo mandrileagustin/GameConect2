@@ -3,35 +3,37 @@ import { BasicFormSchema } from "./PublicarSchema";
 import { useAuthContext } from "../../Context/AuthContext";
 import "./CardPublicar.css";
 import Swal from "sweetalert2";
-export default function Comentario() {
+export default function Comentario({ setAllUserPost }) {
   const { authorization } = useAuthContext();
 
   async function onSubmit(values, actions) {
     let formData = new FormData();
     formData.append("imagen", values.path);
     formData.append("comentario", values.comentario);
-    fetch(`http://localhost:3000/post/addPost/${authorization.id}`, {
-      method: "POST",
 
-      body: formData,
-    }).then((response) => {
-      console.log(values);
-      if (response.status === 400) {
-        alert("error al recibir el body");
-      } else if (response.status === 200) {
-        Swal.fire({
-          position: "center",
-          title: "Publicacion realizada exito",
-          confirmButtonColor: "#00074a",
-        });
-      } else if (response.status === 409) {
-        alert("usuario ya registrado");
+    const response = await fetch(
+      `http://localhost:3000/post/addPost/${authorization.id}`,
+      {
+        method: "POST",
+        body: formData,
       }
-    });
-    console.log(values);
-
+    );
+    if (response.status === 400) {
+      alert("error al recibir el body");
+    } else if (response.status === 200) {
+      const posts = await response.json();
+      setAllUserPost(posts);
+      Swal.fire({
+        position: "center",
+        title: "Publicacion realizada exito",
+        confirmButtonColor: "#00074a",
+      });
+    } else if (response.status === 409) {
+      alert("usuario ya registrado");
+    }
     actions.resetForm();
   }
+
   const {
     values,
     touched,

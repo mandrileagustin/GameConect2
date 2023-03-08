@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <>
-      <CardPublicar />
+      <CardPublicar setAllUserPost={setAllUserPost} />
       {allUserPost.map((postUsers, index) => (
         <div className="d-flex flex-column align-items-center" key={index}>
           <hr className="border border-primary border-2 opacity-25 w-50" />

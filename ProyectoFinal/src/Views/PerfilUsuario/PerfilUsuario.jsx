@@ -23,12 +23,6 @@ export default function PerfilUsuario() {
         const dataPost = await responsePost.json();
         setPostUsuarios(dataPost);
         console.log(dataPost);
-
-        const responseJuegos = await fetch(
-          `http://localhost:3000/user/juegoUsuario/${id}`
-        );
-        const dataJuegos = await responseJuegos.json();
-        setJuegoUsuarios(dataJuegos);
       } catch (error) {
         console.log(error);
       }
@@ -69,6 +63,7 @@ export default function PerfilUsuario() {
                 path={postUsuario.path}
                 nickname={postUsuario.nickname}
                 idpost={postUsuario.idpost}
+                setPostUsuarios={setPostUsuarios}
               />
             </div>
           ))}

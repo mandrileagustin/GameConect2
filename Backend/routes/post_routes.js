@@ -15,6 +15,6 @@ PostRouter.get("/", PostController.getPost);
 
 PostRouter.get("/postName/:name", PostController.getPostByName);
 
-PostRouter.delete("/:id", PostController.deletePost);
+PostRouter.delete("/:id/:idUsuario", PostController.deletePost);
 
 export default PostRouter;

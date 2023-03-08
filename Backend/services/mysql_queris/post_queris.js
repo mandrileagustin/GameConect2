@@ -63,6 +63,7 @@ PostQueris.getPostById = async (id) => {
 
 PostQueris.getPostByIdUsuario = async (idUsuario) => {
   let conn = null;
+
   try {
     conn = await db.createConnection();
     return await db.query(
