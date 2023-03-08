@@ -28,7 +28,6 @@ export default function ChatBody({
         <button className="boton-salir" onClick={handleLeaveChat}>
           LEAVE CHAT
         </button>
-        <hr className="border border-primary border-2 opacity-25 h-100" />
       </header>
 
       {/*This shows messages sent from you*/}
