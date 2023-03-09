@@ -87,11 +87,7 @@ export default function Registro() {
     validationSchema: BasicFormSchema,
     onSubmit,
   });
-  //   useEffect(() => {
-  //     if (authorization) {
-  //       navigate("/perfilUsuario");
-  //     }
-  //   }, [authorization]);
+
   return (
     <>
       <div className="container-fluid contenedor-tamaño">
